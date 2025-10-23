@@ -35,7 +35,7 @@ export async function GET(req: Request) {
     const [usersResult, policiesResult, claimsResult, subscriptionsResult] = await Promise.all([
       supabaseAdmin.from("users").select("id, role, created_at"),
       supabaseAdmin.from("policies").select("id, coverage_type, status, created_at, user_id"),
-      supabaseAdmin.from("claims").select("id, status, created_at, max_payout_amount"),
+      supabaseAdmin.from("claims").select("id, claim_type, status, created_at, max_payout_amount"),
       supabaseAdmin.from("agent_subscriptions").select("id, status, created_at"),
     ]);
 
