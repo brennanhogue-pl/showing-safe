@@ -6,9 +6,10 @@ import { updateEmailTemplate } from "@/lib/emailTemplates";
 // GET - Get a single email template
 export async function GET(
   req: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params;
     const authHeader = req.headers.get("authorization");
     if (!authHeader) {
       return new NextResponse("Unauthorized", { status: 401 });
@@ -38,7 +39,7 @@ export async function GET(
     const { data: template, error } = await supabaseAdmin
       .from("email_templates")
       .select("*")
-      .eq("id", params.id)
+      .eq("id", id)
       .single();
 
     if (error || !template) {
@@ -55,9 +56,10 @@ export async function GET(
 // PATCH - Update an email template
 export async function PATCH(
   req: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params;
     const authHeader = req.headers.get("authorization");
     if (!authHeader) {
       return new NextResponse("Unauthorized", { status: 401 });
@@ -93,7 +95,7 @@ export async function PATCH(
     if (description !== undefined) updates.description = description;
     if (is_active !== undefined) updates.is_active = is_active;
 
-    const updatedTemplate = await updateEmailTemplate(params.id, updates);
+    const updatedTemplate = await updateEmailTemplate(id, updates);
 
     if (!updatedTemplate) {
       return new NextResponse("Failed to update email template", { status: 500 });
@@ -104,7 +106,7 @@ export async function PATCH(
       admin_id: user.id,
       action: "update_email_template",
       resource_type: "email_template",
-      resource_id: params.id,
+      resource_id: id,
       details: {
         template_name: updatedTemplate.name,
         updated_fields: Object.keys(updates),
@@ -121,9 +123,10 @@ export async function PATCH(
 // POST - Send a test email using this template
 export async function POST(
   req: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params;
     const authHeader = req.headers.get("authorization");
     if (!authHeader) {
       return new NextResponse("Unauthorized", { status: 401 });
@@ -161,7 +164,7 @@ export async function POST(
     const { data: template, error } = await supabaseAdmin
       .from("email_templates")
       .select("*")
-      .eq("id", params.id)
+      .eq("id", id)
       .single();
 
     if (error || !template) {
