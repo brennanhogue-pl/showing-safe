@@ -76,70 +76,131 @@ export default function HomePage() {
       </nav>
 
       {/* Hero Section */}
-      <section className="pt-20 pb-32 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center max-w-3xl mx-auto">
-            <Badge className="mb-6 bg-blue-100 text-blue-800 hover:bg-blue-100">
-              For Real Estate Agents
+      <section className="relative pt-20 pb-32 px-4 sm:px-6 lg:px-8 overflow-hidden">
+        {/* Animated Background Gradients */}
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-float"></div>
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-float" style={{ animationDelay: "1s" }}></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-indigo-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-float" style={{ animationDelay: "2s" }}></div>
+        </div>
+
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="text-center max-w-4xl mx-auto">
+            <Badge className="mb-6 bg-blue-600 text-white hover:bg-blue-700 border-0 px-4 py-2 text-sm font-semibold animate-fade-in-down shadow-premium-colored">
+              🏠 For Real Estate Agents
             </Badge>
-            <h1 className="text-5xl sm:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-              Protect Yourself on Every Showing
+
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 mb-8 leading-tight animate-fade-in-up tracking-tight">
+              Protect Yourself on{" "}
+              <span className="text-gradient-blue">Every Showing</span>
             </h1>
-            <p className="text-xl text-gray-600 mb-8">
+
+            <p className="text-xl sm:text-2xl text-gray-600 mb-10 leading-relaxed animate-fade-in-up animate-delay-100 max-w-3xl mx-auto">
               Showing a home can be unpredictable. Eliminate the stress with coverage that protects you from accidental damage during showings — so you&apos;re never stuck with an unexpected bill.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-              <Button size="lg" className="text-lg px-8 py-6" onClick={() => router.push("/auth/register")}>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10 animate-fade-in-up animate-delay-200">
+              <Button
+                size="lg"
+                className="text-lg px-10 py-7 shadow-premium-colored hover:shadow-premium-lg transition-all duration-300 hover:-translate-y-1 btn-premium group"
+                onClick={() => router.push("/auth/register")}
+              >
                 Get Protected Today
-                <ArrowRight className="ml-2 h-5 w-5" />
+                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Button>
-              <Button size="lg" variant="outline" className="text-lg px-8 py-6" onClick={() => router.push("#pricing")}>
+              <Button
+                size="lg"
+                variant="outline"
+                className="text-lg px-10 py-7 border-2 hover:bg-gray-50 transition-all duration-300"
+                onClick={() => router.push("#pricing")}
+              >
                 View Pricing
               </Button>
             </div>
-            <p className="text-sm text-gray-500">Starting at just $9.99/month • No free trial required</p>
+
+            {/* Trust Indicators */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-sm text-gray-600 animate-fade-in-up animate-delay-300">
+              <div className="flex items-center gap-2">
+                <Check className="w-5 h-5 text-green-600" />
+                <span>Starting at $9.99/month</span>
+              </div>
+              <div className="hidden sm:block w-1 h-1 bg-gray-400 rounded-full"></div>
+              <div className="flex items-center gap-2">
+                <Check className="w-5 h-5 text-green-600" />
+                <span>No credit card required</span>
+              </div>
+              <div className="hidden sm:block w-1 h-1 bg-gray-400 rounded-full"></div>
+              <div className="flex items-center gap-2">
+                <Check className="w-5 h-5 text-green-600" />
+                <span>Cancel anytime</span>
+              </div>
+            </div>
+
+            {/* Social Proof */}
+            <div className="mt-16 pt-8 border-t border-gray-200 animate-fade-in animate-delay-400">
+              <p className="text-sm text-gray-500 mb-4">Trusted by real estate professionals nationwide</p>
+              <div className="flex items-center justify-center gap-2">
+                <div className="flex -space-x-2">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 border-2 border-white"></div>
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-400 to-purple-600 border-2 border-white"></div>
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-indigo-400 to-indigo-600 border-2 border-white"></div>
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-pink-400 to-pink-600 border-2 border-white"></div>
+                  <div className="w-10 h-10 rounded-full bg-gray-200 border-2 border-white flex items-center justify-center text-xs font-semibold text-gray-600">
+                    500+
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Problem Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-white relative">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-              One Accident Can Cost You Hundreds
+            <Badge className="mb-4 bg-red-100 text-red-800 border-0">The Hidden Cost</Badge>
+            <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-6 tracking-tight">
+              One Accident Can Cost You{" "}
+              <span className="text-red-600">Hundreds</span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
               Knocked over a vase? Scratched hardwood floors? Damaged a fixture? These things happen, and they&apos;re expensive.
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            <Card className="border-2">
-              <CardContent className="pt-6">
-                <AlertCircle className="w-12 h-12 text-red-500 mb-4" />
-                <h3 className="text-xl font-semibold mb-2">The Risk</h3>
-                <p className="text-gray-600">
+            <Card className="border-2 hover-lift hover:border-red-200 transition-all duration-300 group">
+              <CardContent className="pt-8">
+                <div className="w-16 h-16 bg-red-100 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                  <AlertCircle className="w-8 h-8 text-red-600" />
+                </div>
+                <h3 className="text-2xl font-bold mb-3 text-gray-900">The Risk</h3>
+                <p className="text-gray-600 leading-relaxed">
                   Every showing puts your wallet at risk. One small accident can cost hundreds or thousands in damages.
                 </p>
               </CardContent>
             </Card>
 
-            <Card className="border-2">
-              <CardContent className="pt-6">
-                <DollarSign className="w-12 h-12 text-orange-500 mb-4" />
-                <h3 className="text-xl font-semibold mb-2">Out of Pocket</h3>
-                <p className="text-gray-600">
+            <Card className="border-2 hover-lift hover:border-orange-200 transition-all duration-300 group shadow-premium">
+              <CardContent className="pt-8">
+                <div className="w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                  <DollarSign className="w-8 h-8 text-orange-600" />
+                </div>
+                <h3 className="text-2xl font-bold mb-3 text-gray-900">Out of Pocket</h3>
+                <p className="text-gray-600 leading-relaxed">
                   Without protection, you&apos;re personally liable for damages that occur during showings you conduct.
                 </p>
               </CardContent>
             </Card>
 
-            <Card className="border-2">
-              <CardContent className="pt-6">
-                <Clock className="w-12 h-12 text-yellow-500 mb-4" />
-                <h3 className="text-xl font-semibold mb-2">The Stress</h3>
-                <p className="text-gray-600">
+            <Card className="border-2 hover-lift hover:border-yellow-200 transition-all duration-300 group">
+              <CardContent className="pt-8">
+                <div className="w-16 h-16 bg-yellow-100 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                  <Clock className="w-8 h-8 text-yellow-600" />
+                </div>
+                <h3 className="text-2xl font-bold mb-3 text-gray-900">The Stress</h3>
+                <p className="text-gray-600 leading-relaxed">
                   Worrying about potential damage takes your focus away from selling homes and serving clients.
                 </p>
               </CardContent>
@@ -149,67 +210,131 @@ export default function HomePage() {
       </section>
 
       {/* Solution Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-600 to-indigo-700 text-white">
-        <div className="max-w-7xl mx-auto">
+      <section className="relative py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
+        {/* Gradient Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-700"></div>
+
+        {/* Animated Blobs */}
+        <div className="absolute top-0 left-0 w-96 h-96 bg-white/10 rounded-full mix-blend-overlay filter blur-3xl animate-float"></div>
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-white/10 rounded-full mix-blend-overlay filter blur-3xl animate-float" style={{ animationDelay: "1.5s" }}></div>
+
+        <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-              Show Homes with Confidence, Not Fear
+            <Badge className="mb-4 bg-white/20 text-white border-0 backdrop-blur-sm">The Solution</Badge>
+            <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-white tracking-tight">
+              Show Homes with{" "}
+              <span className="relative inline-block">
+                <span className="relative z-10">Confidence</span>
+                <span className="absolute bottom-2 left-0 w-full h-3 bg-yellow-400/30 -rotate-1"></span>
+              </span>
+              , Not Fear
             </h2>
-            <p className="text-xl text-blue-100 max-w-2xl mx-auto">
+            <p className="text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed">
               For less than a cup of coffee per month, protect yourself from the unexpected.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <Card className="bg-white/10 border-white/20 text-white">
-              <CardContent className="pt-6">
-                <Shield className="w-12 h-12 mb-4" />
-                <h3 className="text-2xl font-semibold mb-4">Agent Protection</h3>
-                <div className="text-3xl font-bold mb-2">$9.99<span className="text-lg font-normal">/month</span></div>
-                <p className="text-blue-100 mb-4">
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            {/* Agent Protection Card */}
+            <Card className="relative overflow-hidden border-0 shadow-premium-lg group hover-lift bg-white">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-blue-100 rounded-full -mr-16 -mt-16"></div>
+              <Badge className="absolute top-4 right-4 bg-blue-600 text-white border-0">Most Popular</Badge>
+
+              <CardContent className="pt-8 pb-8 relative z-10">
+                <div className="w-16 h-16 bg-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                  <Shield className="w-8 h-8 text-white" />
+                </div>
+
+                <h3 className="text-2xl font-bold mb-2 text-gray-900">Agent Protection</h3>
+                <div className="mb-4">
+                  <span className="text-5xl font-bold text-gray-900">$9.99</span>
+                  <span className="text-xl text-gray-600">/month</span>
+                </div>
+
+                <p className="text-gray-600 mb-6 leading-relaxed">
                   Covers you when you accidentally damage something while showing any home.
                 </p>
-                <ul className="space-y-2">
-                  <li className="flex items-center gap-2">
-                    <Check className="w-5 h-5 text-green-400" />
-                    <span>Up to $30,000 per claim</span>
+
+                <ul className="space-y-3 mb-8">
+                  <li className="flex items-center gap-3">
+                    <div className="w-5 h-5 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                      <Check className="w-3 h-3 text-green-600" />
+                    </div>
+                    <span className="text-gray-700">Up to $30,000 per claim</span>
                   </li>
-                  <li className="flex items-center gap-2">
-                    <Check className="w-5 h-5 text-green-400" />
-                    <span>Unlimited claims</span>
+                  <li className="flex items-center gap-3">
+                    <div className="w-5 h-5 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                      <Check className="w-3 h-3 text-green-600" />
+                    </div>
+                    <span className="text-gray-700">Unlimited claims</span>
                   </li>
-                  <li className="flex items-center gap-2">
-                    <Check className="w-5 h-5 text-green-400" />
-                    <span>Fast reimbursement</span>
+                  <li className="flex items-center gap-3">
+                    <div className="w-5 h-5 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                      <Check className="w-3 h-3 text-green-600" />
+                    </div>
+                    <span className="text-gray-700">Fast reimbursement</span>
                   </li>
                 </ul>
+
+                <Button className="w-full py-6" size="lg" onClick={() => router.push("/auth/register")}>
+                  Get Started
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
               </CardContent>
             </Card>
 
-            <Card className="bg-white/10 border-white/20 text-white">
-              <CardContent className="pt-6">
-                <FileCheck className="w-12 h-12 mb-4" />
-                <h3 className="text-2xl font-semibold mb-4">Listing Protection</h3>
-                <div className="text-3xl font-bold mb-2">$99<span className="text-lg font-normal">/listing</span></div>
-                <p className="text-blue-100 mb-4">
+            {/* Listing Protection Card */}
+            <Card className="relative overflow-hidden border-2 border-white/20 shadow-premium-lg group hover-lift bg-white/95 backdrop-blur-sm">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-purple-100 rounded-full -mr-16 -mt-16"></div>
+
+              <CardContent className="pt-8 pb-8 relative z-10">
+                <div className="w-16 h-16 bg-purple-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                  <FileCheck className="w-8 h-8 text-white" />
+                </div>
+
+                <h3 className="text-2xl font-bold mb-2 text-gray-900">Listing Protection</h3>
+                <div className="mb-4">
+                  <span className="text-5xl font-bold text-gray-900">$99</span>
+                  <span className="text-xl text-gray-600">/listing</span>
+                </div>
+
+                <p className="text-gray-600 mb-6 leading-relaxed">
                   Protects your listing from damages during showings for 90 days.
                 </p>
-                <ul className="space-y-2">
-                  <li className="flex items-center gap-2">
-                    <Check className="w-5 h-5 text-green-400" />
-                    <span>Up to $30,000 per claim</span>
+
+                <ul className="space-y-3 mb-8">
+                  <li className="flex items-center gap-3">
+                    <div className="w-5 h-5 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                      <Check className="w-3 h-3 text-green-600" />
+                    </div>
+                    <span className="text-gray-700">Up to $30,000 per claim</span>
                   </li>
-                  <li className="flex items-center gap-2">
-                    <Check className="w-5 h-5 text-green-400" />
-                    <span>Unlimited claims (90 days)</span>
+                  <li className="flex items-center gap-3">
+                    <div className="w-5 h-5 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                      <Check className="w-3 h-3 text-green-600" />
+                    </div>
+                    <span className="text-gray-700">Unlimited claims (90 days)</span>
                   </li>
-                  <li className="flex items-center gap-2">
-                    <Check className="w-5 h-5 text-green-400" />
-                    <span>One-time fee per listing</span>
+                  <li className="flex items-center gap-3">
+                    <div className="w-5 h-5 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                      <Check className="w-3 h-3 text-green-600" />
+                    </div>
+                    <span className="text-gray-700">One-time fee per listing</span>
                   </li>
                 </ul>
+
+                <Button variant="outline" className="w-full py-6 border-2" size="lg" onClick={() => router.push("/pricing")}>
+                  Learn More
+                </Button>
               </CardContent>
             </Card>
+          </div>
+
+          {/* View All Plans Link */}
+          <div className="text-center mt-12">
+            <Button variant="link" className="text-white text-lg hover:text-blue-100" onClick={() => router.push("/pricing")}>
+              View detailed pricing comparison →
+            </Button>
           </div>
         </div>
       </section>
