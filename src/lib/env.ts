@@ -18,8 +18,8 @@ function getOptionalEnvVar(key: string): string | undefined {
   return process.env[key];
 }
 
-// Server-side only variables
-export const env = {
+// Server-side only variables - only evaluate on server
+export const env = typeof window === 'undefined' ? {
   stripe: {
     secretKey: getEnvVar('STRIPE_SECRET_KEY'),
     webhookSecret: getEnvVar('STRIPE_WEBHOOK_SECRET'),
@@ -30,7 +30,7 @@ export const env = {
   resend: {
     apiKey: getOptionalEnvVar('RESEND_API_KEY'), // Optional for now
   },
-};
+} : {} as any;
 
 // Public variables (available client-side)
 export const publicEnv = {
@@ -40,7 +40,8 @@ export const publicEnv = {
   },
   stripe: {
     publishableKey: getEnvVar('NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY'),
-    agentSubscriptionPriceId: getOptionalEnvVar('NEXT_PUBLIC_STRIPE_AGENT_SUBSCRIPTION_PRICE_ID'), // Optional - can be added after Stripe product creation
+    agentSubscriptionPriceId: getOptionalEnvVar('NEXT_PUBLIC_STRIPE_AGENT_SUBSCRIPTION_PRICE_ID'), // Agent monthly subscription
+    singleUsePriceId: getOptionalEnvVar('NEXT_PUBLIC_STRIPE_PRICE_SINGLE'), // Single-use listing protection
   },
   app: {
     url: getEnvVar('NEXT_PUBLIC_APP_URL'),

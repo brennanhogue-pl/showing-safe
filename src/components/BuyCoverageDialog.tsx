@@ -11,17 +11,10 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Shield } from "lucide-react";
 import AddressForm from "@/components/AddressForm";
+import { publicEnv } from "@/lib/env";
 
 interface BuyCoverageDialogProps {
   trigger?: React.ReactNode;
@@ -45,7 +38,6 @@ export default function BuyCoverageDialog({
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
   const [zipCode, setZipCode] = useState("");
-  const [coverageType, setCoverageType] = useState("Single-Use Policy");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
 
@@ -90,16 +82,24 @@ export default function BuyCoverageDialog({
       ? `${street}, ${unit}, ${city}, ${state} ${zipCode}`
       : `${street}, ${city}, ${state} ${zipCode}`;
 
+    // Get the price ID from env
+    const priceId = publicEnv.stripe.singleUsePriceId;
+    if (!priceId) {
+      setError("Stripe is not configured. Please contact support.");
+      setIsLoading(false);
+      return;
+    }
+
     try {
       // Call the checkout API
       const response = await fetch("/api/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          priceId: process.env.NEXT_PUBLIC_STRIPE_PRICE_SINGLE,
+          priceId,
           userId: user.id,
           propertyAddress,
-          coverageType,
+          coverageType: "Single-Use Policy",
         }),
       });
 
@@ -134,10 +134,10 @@ export default function BuyCoverageDialog({
         <DialogHeader>
           <div className="flex items-center gap-2 mb-2">
             <Shield className="w-6 h-6 text-blue-600" />
-            <DialogTitle>Purchase Coverage</DialogTitle>
+            <DialogTitle>Protect a Listing</DialogTitle>
           </div>
           <DialogDescription>
-            Protect your property during showings with comprehensive insurance coverage
+            Purchase 90-day protection for a specific property listing
           </DialogDescription>
         </DialogHeader>
 
@@ -162,31 +162,31 @@ export default function BuyCoverageDialog({
             disabled={isLoading}
           />
 
-          <div className="space-y-2">
-            <Label htmlFor="coverage">Coverage Type</Label>
-            <Select
-              value={coverageType}
-              onValueChange={setCoverageType}
-              disabled={isLoading}
-            >
-              <SelectTrigger id="coverage">
-                <SelectValue placeholder="Select coverage type" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="Single-Use Policy">
-                  <div className="flex flex-col items-start">
-                    <span className="font-medium">Single-Use Policy</span>
-                    <span className="text-xs text-muted-foreground">$99 - One showing</span>
-                  </div>
-                </SelectItem>
-                <SelectItem value="Listing Agent Subscription">
-                  <div className="flex flex-col items-start">
-                    <span className="font-medium">Agent Subscription</span>
-                    <span className="text-xs text-muted-foreground">$99/mo - Unlimited</span>
-                  </div>
-                </SelectItem>
-              </SelectContent>
-            </Select>
+          <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+            <div className="flex items-start justify-between mb-2">
+              <div>
+                <h4 className="font-semibold text-blue-900">Single-Use Listing Protection</h4>
+                <p className="text-sm text-blue-800 mt-1">90-day coverage for one property</p>
+              </div>
+              <div className="text-right">
+                <div className="text-2xl font-bold text-blue-900">$99</div>
+                <div className="text-xs text-blue-700">one-time</div>
+              </div>
+            </div>
+            <ul className="text-sm text-blue-800 space-y-1 mt-3">
+              <li className="flex items-start">
+                <Shield className="w-4 h-4 mr-2 mt-0.5 flex-shrink-0" />
+                <span>Protects this specific listing for 90 days</span>
+              </li>
+              <li className="flex items-start">
+                <Shield className="w-4 h-4 mr-2 mt-0.5 flex-shrink-0" />
+                <span>Coverage during all showings at this property</span>
+              </li>
+              <li className="flex items-start">
+                <Shield className="w-4 h-4 mr-2 mt-0.5 flex-shrink-0" />
+                <span>File claims if damage occurs during showings</span>
+              </li>
+            </ul>
           </div>
 
           <div className="flex gap-3 pt-4">
