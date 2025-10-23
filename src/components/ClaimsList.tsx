@@ -1,20 +1,7 @@
 import { FileText, Calendar, MapPin, AlertCircle } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-
-interface Claim {
-  id: string;
-  policy_id: string;
-  incident_date: string;
-  damaged_items: string;
-  supra_showing_number: string;
-  description: string;
-  status: 'pending' | 'approved' | 'denied';
-  created_at: string;
-  policies?: {
-    property_address: string;
-  };
-}
+import { Claim } from '@/types';
 
 interface ClaimsListProps {
   claims: Claim[];
