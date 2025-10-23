@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname, useRouter } from "next/navigation";
-import { Shield, FileText, LogOut, User, LayoutDashboard, Users, Mail, BarChart3, Settings } from "lucide-react";
+import { Shield, FileText, LogOut, User, LayoutDashboard, Users, Mail, BarChart3, Settings, MailOpen } from "lucide-react";
 import {
   Sidebar,
   SidebarContent,
@@ -61,6 +61,11 @@ export function DashboardSidebar() {
           title: "Reports",
           icon: BarChart3,
           url: "/dashboard/admin/reports",
+        },
+        {
+          title: "Email Templates",
+          icon: MailOpen,
+          url: "/dashboard/admin/email-templates",
         },
         {
           title: "Settings",
