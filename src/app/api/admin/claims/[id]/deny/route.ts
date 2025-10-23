@@ -6,7 +6,7 @@ import { DenyClaimRequest } from "@/types";
 // POST - Deny a claim
 export async function POST(
   req: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const authHeader = req.headers.get("authorization");
@@ -35,7 +35,7 @@ export async function POST(
       return new NextResponse("Forbidden: Admin access required", { status: 403 });
     }
 
-    const claimId = params.id;
+    const { id: claimId } = await params;
     const body: DenyClaimRequest = await req.json();
     const { reason, adminNote } = body;
 

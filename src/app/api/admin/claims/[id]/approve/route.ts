@@ -35,7 +35,7 @@ export async function POST(
       return new NextResponse("Forbidden: Admin access required", { status: 403 });
     }
 
-    const claimId = params.id;
+    const { id: claimId } = await params;
     const body: ApproveClaimRequest = await req.json();
     const { payoutAmount, adminNote } = body;
 

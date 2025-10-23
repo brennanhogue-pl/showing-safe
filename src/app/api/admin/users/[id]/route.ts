@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 import { UpdateUserRequest } from "@/types";
 
 // GET - Get single user details
-export async function GET(req: Request, { params }: { params: { id: string } }) {
+export async function GET(req: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
     const authHeader = req.headers.get("authorization");
     if (!authHeader) {
@@ -32,7 +32,7 @@ export async function GET(req: Request, { params }: { params: { id: string } }) 
       return new NextResponse("Forbidden: Admin access required", { status: 403 });
     }
 
-    const userId = params.id;
+    const { id: userId } = await params;
 
     // Get user with related data
     const { data: userData, error } = await supabaseAdmin
@@ -70,7 +70,7 @@ export async function GET(req: Request, { params }: { params: { id: string } }) 
 }
 
 // PATCH - Update user
-export async function PATCH(req: Request, { params }: { params: { id: string } }) {
+export async function PATCH(req: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
     const authHeader = req.headers.get("authorization");
     if (!authHeader) {
@@ -98,7 +98,7 @@ export async function PATCH(req: Request, { params }: { params: { id: string } }
       return new NextResponse("Forbidden: Admin access required", { status: 403 });
     }
 
-    const userId = params.id;
+    const { id: userId } = await params;
     const body: UpdateUserRequest = await req.json();
     const { fullName, email, role, agentSubscriptionStatus } = body;
 
@@ -162,7 +162,7 @@ export async function PATCH(req: Request, { params }: { params: { id: string } }
 }
 
 // DELETE - Delete user
-export async function DELETE(req: Request, { params }: { params: { id: string } }) {
+export async function DELETE(req: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
     const authHeader = req.headers.get("authorization");
     if (!authHeader) {
@@ -190,7 +190,7 @@ export async function DELETE(req: Request, { params }: { params: { id: string } 
       return new NextResponse("Forbidden: Admin access required", { status: 403 });
     }
 
-    const userId = params.id;
+    const { id: userId } = await params;
 
     // Prevent deleting yourself
     if (userId === user.id) {
