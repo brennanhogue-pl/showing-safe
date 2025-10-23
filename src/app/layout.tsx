@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from "@/contexts/AuthContext";
-import Navbar from "@/components/Navbar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "ShowingSafe - Property Insurance for Open Houses",
-  description: "Protect your property during showings with comprehensive insurance coverage",
+  title: "ShowingSafe - Protection for Real Estate Agents",
+  description: "Protect yourself from accidental damage during showings. Starting at just $9.99/month.",
 };
 
 export default function RootLayout({
@@ -30,7 +29,6 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <AuthProvider>
-          <Navbar />
           {children}
         </AuthProvider>
       </body>

@@ -9,14 +9,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { Shield } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { Shield, Check } from "lucide-react";
 
 export default function RegisterPage() {
   const router = useRouter();
@@ -25,19 +19,13 @@ export default function RegisterPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [role, setRole] = useState<"homeowner" | "agent" | "admin">("homeowner");
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  // Redirect if already logged in - use metadata instead of waiting for profile
+  // Redirect if already logged in
   useEffect(() => {
     if (user) {
-      console.log("✅ User already logged in, redirecting to dashboard...");
-      console.log("User metadata:", user.user_metadata);
-
-      // Get role from user metadata (set during signup)
-      const role = user.user_metadata?.role || profile?.role || "homeowner";
-
+      const role = user.user_metadata?.role || profile?.role || "agent";
       const dashboardPath =
         role === "admin"
           ? "/dashboard/admin"
@@ -45,15 +33,10 @@ export default function RegisterPage() {
           ? "/dashboard/agent"
           : "/dashboard/homeowner";
 
-      console.log("Redirecting to:", dashboardPath);
-
-      // Try router.push first, fallback to window.location if it fails
       try {
         router.push(dashboardPath);
-        // If router.push doesn't work after 500ms, force reload
         setTimeout(() => {
           if (window.location.pathname === "/auth/register") {
-            console.log("Router.push failed, using window.location");
             window.location.href = dashboardPath;
           }
         }, 500);
@@ -89,7 +72,8 @@ export default function RegisterPage() {
     }
 
     try {
-      const { error: signUpError } = await signUp(email, password, fullName, role);
+      // Always register as agent by default
+      const { error: signUpError } = await signUp(email, password, fullName, "agent");
 
       if (signUpError) {
         setError(signUpError.message);
@@ -97,10 +81,7 @@ export default function RegisterPage() {
         return;
       }
 
-      console.log("✅ Registration successful, waiting for profile to load...");
-
       // The useEffect hook will handle the redirect once profile is loaded
-      // Keep loading state active until redirect happens
     } catch (err) {
       console.error("Registration error:", err);
       setError("An unexpected error occurred. Please try again.");
@@ -109,20 +90,24 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4 py-12">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 px-4 py-12">
       <div className="w-full max-w-md">
-        <div className="flex justify-center mb-8">
+        {/* Logo */}
+        <div className="flex justify-center mb-8 cursor-pointer" onClick={() => router.push("/")}>
           <div className="flex items-center gap-2">
             <Shield className="w-8 h-8 text-blue-600" />
             <h1 className="text-2xl font-bold text-gray-900">ShowingSafe</h1>
           </div>
         </div>
 
-        <Card>
-          <CardHeader>
-            <CardTitle>Create Account</CardTitle>
-            <CardDescription>
-              Get started with ShowingSafe coverage
+        <Card className="border-2">
+          <CardHeader className="text-center pb-4">
+            <Badge className="mb-4 bg-blue-100 text-blue-800 hover:bg-blue-100 mx-auto">
+              For Real Estate Agents
+            </Badge>
+            <CardTitle className="text-2xl">Create Your Free Account</CardTitle>
+            <CardDescription className="text-base">
+              Get started in under 2 minutes. No credit card required.
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -138,7 +123,7 @@ export default function RegisterPage() {
                 <Input
                   id="fullName"
                   type="text"
-                  placeholder="John Doe"
+                  placeholder="John Smith"
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
                   disabled={isLoading}
@@ -151,35 +136,12 @@ export default function RegisterPage() {
                 <Input
                   id="email"
                   type="email"
-                  placeholder="you@example.com"
+                  placeholder="agent@realty.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   disabled={isLoading}
                   required
                 />
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="role">Account Type</Label>
-                <Select
-                  value={role}
-                  onValueChange={(value) => setRole(value as "homeowner" | "agent" | "admin")}
-                  disabled={isLoading}
-                >
-                  <SelectTrigger id="role">
-                    <SelectValue placeholder="Select your role" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="homeowner">Homeowner</SelectItem>
-                    <SelectItem value="agent">Real Estate Agent</SelectItem>
-                    <SelectItem value="admin">Administrator</SelectItem>
-                  </SelectContent>
-                </Select>
-                <p className="text-xs text-muted-foreground">
-                  {role === "homeowner" && "Purchase one-time coverage for your property"}
-                  {role === "agent" && "Manage multiple properties with subscription"}
-                  {role === "admin" && "Full system access and management"}
-                </p>
               </div>
 
               <div className="space-y-2">
@@ -192,7 +154,11 @@ export default function RegisterPage() {
                   onChange={(e) => setPassword(e.target.value)}
                   disabled={isLoading}
                   required
+                  minLength={6}
                 />
+                <p className="text-xs text-muted-foreground">
+                  At least 6 characters
+                </p>
               </div>
 
               <div className="space-y-2">
@@ -205,18 +171,43 @@ export default function RegisterPage() {
                   onChange={(e) => setConfirmPassword(e.target.value)}
                   disabled={isLoading}
                   required
+                  minLength={6}
                 />
+              </div>
+
+              {/* What you get */}
+              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                <p className="text-sm font-semibold text-blue-900 mb-2">What you'll get:</p>
+                <ul className="space-y-1.5">
+                  <li className="flex items-center gap-2 text-sm text-blue-800">
+                    <Check className="w-4 h-4 text-blue-600 flex-shrink-0" />
+                    Access to your personal dashboard
+                  </li>
+                  <li className="flex items-center gap-2 text-sm text-blue-800">
+                    <Check className="w-4 h-4 text-blue-600 flex-shrink-0" />
+                    Choose your protection plan
+                  </li>
+                  <li className="flex items-center gap-2 text-sm text-blue-800">
+                    <Check className="w-4 h-4 text-blue-600 flex-shrink-0" />
+                    File claims instantly when needed
+                  </li>
+                </ul>
               </div>
 
               <Button
                 type="submit"
                 className="w-full"
+                size="lg"
                 disabled={isLoading}
               >
-                {isLoading ? "Creating account..." : "Create Account"}
+                {isLoading ? "Creating account..." : "Create Free Account"}
               </Button>
 
-              <div className="text-center text-sm text-gray-600">
+              <p className="text-xs text-center text-gray-500">
+                By creating an account, you agree to our Terms of Service and Privacy Policy
+              </p>
+
+              <div className="text-center text-sm text-gray-600 pt-2">
                 Already have an account?{" "}
                 <Link
                   href="/auth/login"
@@ -228,6 +219,15 @@ export default function RegisterPage() {
             </form>
           </CardContent>
         </Card>
+
+        {/* Trust indicators */}
+        <div className="mt-6 text-center">
+          <p className="text-sm text-gray-600 mb-2">Trusted by real estate professionals</p>
+          <div className="flex items-center justify-center gap-4 text-xs text-gray-500">
+            <span>✓ No credit card required</span>
+            <span>✓ Cancel anytime</span>
+          </div>
+        </div>
       </div>
     </div>
   );
