@@ -53,23 +53,56 @@ export default function HomePage() {
   return (
     <main className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
       {/* Navigation */}
-      <nav className="bg-white border-b border-gray-200">
+      <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center gap-2">
-              <Shield className="w-8 h-8 text-blue-600" />
-              <span className="text-2xl font-bold text-gray-900">ShowingSafe</span>
+          <div className="flex justify-between items-center h-18">
+            {/* Logo */}
+            <div className="flex items-center gap-3 cursor-pointer group" onClick={() => router.push("/")}>
+              <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg">
+                <Shield className="w-6 h-6 text-white" />
+              </div>
+              <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+                ShowingSafe
+              </span>
             </div>
-            <div className="hidden md:flex items-center gap-8">
-              <button onClick={() => router.push("/how-it-works")} className="text-gray-600 hover:text-gray-900">How It Works</button>
-              <button onClick={() => router.push("/pricing")} className="text-gray-600 hover:text-gray-900">Pricing</button>
-              <a href="#faq" className="text-gray-600 hover:text-gray-900">FAQ</a>
-              <Button variant="ghost" onClick={() => router.push("/auth/login")}>
-                Sign In
-              </Button>
-              <Button onClick={() => router.push("/auth/register")}>
-                Get Started
-              </Button>
+
+            {/* Navigation Links */}
+            <div className="hidden md:flex items-center gap-1">
+              <button
+                onClick={() => router.push("/how-it-works")}
+                className="px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-200 font-medium"
+              >
+                How It Works
+              </button>
+              <button
+                onClick={() => router.push("/pricing")}
+                className="px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-200 font-medium"
+              >
+                Pricing
+              </button>
+              <a
+                href="#faq"
+                className="px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-200 font-medium"
+              >
+                FAQ
+              </a>
+
+              {/* CTA Buttons */}
+              <div className="flex items-center gap-3 ml-4 pl-4 border-l border-gray-200">
+                <Button
+                  variant="ghost"
+                  className="hover:bg-gray-100"
+                  onClick={() => router.push("/auth/login")}
+                >
+                  Sign In
+                </Button>
+                <Button
+                  className="shadow-premium-colored btn-premium"
+                  onClick={() => router.push("/auth/register")}
+                >
+                  Get Started
+                </Button>
+              </div>
             </div>
           </div>
         </div>
@@ -340,49 +373,91 @@ export default function HomePage() {
       </section>
 
       {/* How It Works */}
-      <section id="how-it-works" className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+      <section id="how-it-works" className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-50 to-blue-50 relative overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, rgb(59 130 246) 1px, transparent 0)', backgroundSize: '40px 40px' }}></div>
+        </div>
+
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="text-center mb-20">
+            <Badge className="mb-4 bg-blue-600 text-white border-0">How It Works</Badge>
+            <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-6 tracking-tight">
               Simple, Fast, Stress-Free
             </h2>
-            <p className="text-xl text-gray-600">Three steps to complete protection</p>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">Three steps to complete protection</p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
-                1
+          <div className="grid md:grid-cols-3 gap-12 max-w-6xl mx-auto mb-16">
+            {/* Step 1 */}
+            <div className="relative group">
+              <div className="text-center">
+                <div className="relative inline-block mb-6">
+                  <div className="w-20 h-20 bg-gradient-to-br from-blue-600 to-blue-700 text-white rounded-2xl flex items-center justify-center text-3xl font-bold shadow-premium-colored group-hover:scale-110 transition-transform">
+                    1
+                  </div>
+                  <div className="absolute -right-2 -bottom-2 w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+                    <Check className="w-5 h-5 text-white" />
+                  </div>
+                </div>
+                <h3 className="text-2xl font-bold mb-3 text-gray-900">Sign Up</h3>
+                <p className="text-gray-600 leading-relaxed">
+                  Create your free account and choose your protection plan in under 2 minutes.
+                </p>
               </div>
-              <h3 className="text-xl font-semibold mb-2">Sign Up</h3>
-              <p className="text-gray-600">
-                Create your free account and choose your protection plan in under 2 minutes.
-              </p>
+              {/* Connector Line */}
+              <div className="hidden md:block absolute top-10 left-[60%] w-[80%] h-0.5 bg-gradient-to-r from-blue-300 to-transparent"></div>
             </div>
 
-            <div className="text-center">
-              <div className="w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
-                2
+            {/* Step 2 */}
+            <div className="relative group">
+              <div className="text-center">
+                <div className="relative inline-block mb-6">
+                  <div className="w-20 h-20 bg-gradient-to-br from-indigo-600 to-indigo-700 text-white rounded-2xl flex items-center justify-center text-3xl font-bold shadow-premium-colored group-hover:scale-110 transition-transform">
+                    2
+                  </div>
+                  <div className="absolute -right-2 -bottom-2 w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+                    <Check className="w-5 h-5 text-white" />
+                  </div>
+                </div>
+                <h3 className="text-2xl font-bold mb-3 text-gray-900">Show with Confidence</h3>
+                <p className="text-gray-600 leading-relaxed">
+                  Walk through homes knowing you&apos;re protected from accidental damage.
+                </p>
               </div>
-              <h3 className="text-xl font-semibold mb-2">Show with Confidence</h3>
-              <p className="text-gray-600">
-                Walk through homes knowing you&apos;re protected from accidental damage.
-              </p>
+              {/* Connector Line */}
+              <div className="hidden md:block absolute top-10 left-[60%] w-[80%] h-0.5 bg-gradient-to-r from-indigo-300 to-transparent"></div>
             </div>
 
-            <div className="text-center">
-              <div className="w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
-                3
+            {/* Step 3 */}
+            <div className="relative group">
+              <div className="text-center">
+                <div className="relative inline-block mb-6">
+                  <div className="w-20 h-20 bg-gradient-to-br from-purple-600 to-purple-700 text-white rounded-2xl flex items-center justify-center text-3xl font-bold shadow-premium-colored group-hover:scale-110 transition-transform">
+                    3
+                  </div>
+                  <div className="absolute -right-2 -bottom-2 w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+                    <Check className="w-5 h-5 text-white" />
+                  </div>
+                </div>
+                <h3 className="text-2xl font-bold mb-3 text-gray-900">File & Get Paid</h3>
+                <p className="text-gray-600 leading-relaxed">
+                  If damage occurs, file a claim instantly and get reimbursed quickly.
+                </p>
               </div>
-              <h3 className="text-xl font-semibold mb-2">File & Get Paid</h3>
-              <p className="text-gray-600">
-                If damage occurs, file a claim instantly and get reimbursed quickly.
-              </p>
             </div>
           </div>
 
-          <div className="text-center mt-12">
-            <Button size="lg" onClick={() => router.push("/auth/register")}>
+          {/* Time Indicator */}
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 px-6 py-3 bg-white rounded-full shadow-premium">
+              <Clock className="w-5 h-5 text-blue-600" />
+              <span className="text-gray-700 font-semibold">Get protected in under 2 minutes</span>
+            </div>
+          </div>
+
+          <div className="text-center">
+            <Button size="lg" className="px-10 py-6 shadow-premium-colored btn-premium" onClick={() => router.push("/auth/register")}>
               Get Started Now
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
@@ -391,57 +466,94 @@ export default function HomePage() {
       </section>
 
       {/* FAQ Section */}
-      <section id="faq" className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
-        <div className="max-w-3xl mx-auto">
+      <section id="faq" className="py-24 px-4 sm:px-6 lg:px-8 bg-white">
+        <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+            <Badge className="mb-4 bg-purple-100 text-purple-800 border-0">FAQ</Badge>
+            <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-6 tracking-tight">
               Frequently Asked Questions
             </h2>
+            <p className="text-xl text-gray-600">Everything you need to know</p>
           </div>
 
-          <div className="space-y-6">
-            <Card>
-              <CardContent className="pt-6">
-                <h3 className="text-lg font-semibold mb-2">What does the Agent Protection cover?</h3>
-                <p className="text-gray-600">
-                  The $9.99/month plan covers you when you accidentally damage something while showing any home. This includes knocked over items, scratched floors, broken fixtures, and more — up to $30,000 per claim with unlimited claims.
-                </p>
+          <div className="space-y-4">
+            <Card className="border-2 hover:border-blue-200 hover:shadow-premium transition-all duration-300">
+              <CardContent className="pt-6 pb-6">
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 bg-blue-100 rounded-xl flex items-center justify-center flex-shrink-0 mt-1">
+                    <span className="text-blue-600 font-bold text-lg">Q</span>
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold mb-3 text-gray-900">What does the Agent Protection cover?</h3>
+                    <p className="text-gray-600 leading-relaxed">
+                      The $9.99/month plan covers you when you accidentally damage something while showing any home. This includes knocked over items, scratched floors, broken fixtures, and more — up to $30,000 per claim with unlimited claims.
+                    </p>
+                  </div>
+                </div>
               </CardContent>
             </Card>
 
-            <Card>
-              <CardContent className="pt-6">
-                <h3 className="text-lg font-semibold mb-2">What is Listing Protection?</h3>
-                <p className="text-gray-600">
-                  For $99 one-time, you can protect a specific listing from damages that occur during showings for 90 days. Perfect for protecting your sellers&apos; homes during the listing period.
-                </p>
+            <Card className="border-2 hover:border-blue-200 hover:shadow-premium transition-all duration-300">
+              <CardContent className="pt-6 pb-6">
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 bg-purple-100 rounded-xl flex items-center justify-center flex-shrink-0 mt-1">
+                    <span className="text-purple-600 font-bold text-lg">Q</span>
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold mb-3 text-gray-900">What is Listing Protection?</h3>
+                    <p className="text-gray-600 leading-relaxed">
+                      For $99 one-time, you can protect a specific listing from damages that occur during showings for 90 days. Perfect for protecting your sellers&apos; homes during the listing period.
+                    </p>
+                  </div>
+                </div>
               </CardContent>
             </Card>
 
-            <Card>
-              <CardContent className="pt-6">
-                <h3 className="text-lg font-semibold mb-2">How fast is reimbursement?</h3>
-                <p className="text-gray-600">
-                  We process claims quickly. Once approved, you&apos;ll receive reimbursement promptly so you can move forward without financial stress.
-                </p>
+            <Card className="border-2 hover:border-blue-200 hover:shadow-premium transition-all duration-300">
+              <CardContent className="pt-6 pb-6">
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 bg-indigo-100 rounded-xl flex items-center justify-center flex-shrink-0 mt-1">
+                    <span className="text-indigo-600 font-bold text-lg">Q</span>
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold mb-3 text-gray-900">How fast is reimbursement?</h3>
+                    <p className="text-gray-600 leading-relaxed">
+                      We process claims quickly. Once approved, you&apos;ll receive reimbursement promptly so you can move forward without financial stress.
+                    </p>
+                  </div>
+                </div>
               </CardContent>
             </Card>
 
-            <Card>
-              <CardContent className="pt-6">
-                <h3 className="text-lg font-semibold mb-2">Can I cancel anytime?</h3>
-                <p className="text-gray-600">
-                  Yes! The Agent Protection subscription can be cancelled anytime. Listing Protection is a one-time purchase per listing.
-                </p>
+            <Card className="border-2 hover:border-blue-200 hover:shadow-premium transition-all duration-300">
+              <CardContent className="pt-6 pb-6">
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 bg-green-100 rounded-xl flex items-center justify-center flex-shrink-0 mt-1">
+                    <span className="text-green-600 font-bold text-lg">Q</span>
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold mb-3 text-gray-900">Can I cancel anytime?</h3>
+                    <p className="text-gray-600 leading-relaxed">
+                      Yes! The Agent Protection subscription can be cancelled anytime. Listing Protection is a one-time purchase per listing.
+                    </p>
+                  </div>
+                </div>
               </CardContent>
             </Card>
 
-            <Card>
-              <CardContent className="pt-6">
-                <h3 className="text-lg font-semibold mb-2">Do I need both plans?</h3>
-                <p className="text-gray-600">
-                  Not necessarily. Agent Protection covers you when showing any home. Listing Protection is an add-on for agents who want to protect their specific listings from client damage.
-                </p>
+            <Card className="border-2 hover:border-blue-200 hover:shadow-premium transition-all duration-300">
+              <CardContent className="pt-6 pb-6">
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 bg-orange-100 rounded-xl flex items-center justify-center flex-shrink-0 mt-1">
+                    <span className="text-orange-600 font-bold text-lg">Q</span>
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold mb-3 text-gray-900">Do I need both plans?</h3>
+                    <p className="text-gray-600 leading-relaxed">
+                      Not necessarily. Agent Protection covers you when showing any home. Listing Protection is an add-on for agents who want to protect their specific listings from client damage.
+                    </p>
+                  </div>
+                </div>
               </CardContent>
             </Card>
           </div>
@@ -449,19 +561,67 @@ export default function HomePage() {
       </section>
 
       {/* Final CTA */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-600 to-indigo-700 text-white">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-            Ready to Show Homes with Peace of Mind?
+      <section className="relative py-28 px-4 sm:px-6 lg:px-8 overflow-hidden">
+        {/* Premium Gradient Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-indigo-700 to-purple-800"></div>
+
+        {/* Animated Elements */}
+        <div className="absolute top-0 left-0 w-full h-full">
+          <div className="absolute top-20 left-20 w-72 h-72 bg-white/10 rounded-full mix-blend-overlay filter blur-3xl animate-float"></div>
+          <div className="absolute bottom-20 right-20 w-72 h-72 bg-white/10 rounded-full mix-blend-overlay filter blur-3xl animate-float" style={{ animationDelay: "1s" }}></div>
+        </div>
+
+        <div className="max-w-5xl mx-auto text-center relative z-10">
+          <Badge className="mb-6 bg-white/20 text-white border-0 backdrop-blur-sm px-4 py-2">Ready to Get Started?</Badge>
+
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 text-white tracking-tight">
+            Ready to Show Homes with{" "}
+            <span className="relative inline-block">
+              <span className="relative z-10">Peace of Mind</span>
+              <span className="absolute bottom-2 left-0 w-full h-4 bg-yellow-400/30 -rotate-1"></span>
+            </span>
+            ?
           </h2>
-          <p className="text-xl text-blue-100 mb-8">
-            Join agents who protect themselves and their clients on every showing.
+
+          <p className="text-xl sm:text-2xl text-blue-100 mb-10 leading-relaxed max-w-3xl mx-auto">
+            Join hundreds of agents who protect themselves and their clients on every showing. Get started in under 2 minutes.
           </p>
-          <Button size="lg" variant="secondary" className="text-lg px-8 py-6" onClick={() => router.push("/auth/register")}>
-            Get Protected Today
-            <ArrowRight className="ml-2 h-5 w-5" />
-          </Button>
-          <p className="text-sm text-blue-100 mt-4">No credit card required to create account</p>
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+            <Button
+              size="lg"
+              variant="secondary"
+              className="text-lg px-12 py-7 shadow-premium-lg hover:scale-105 transition-transform btn-premium group"
+              onClick={() => router.push("/auth/register")}
+            >
+              Get Protected Today
+              <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+            </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              className="text-lg px-12 py-7 border-2 border-white text-white hover:bg-white/10 backdrop-blur-sm"
+              onClick={() => router.push("/pricing")}
+            >
+              View Pricing
+            </Button>
+          </div>
+
+          {/* Trust Badges */}
+          <div className="flex flex-wrap items-center justify-center gap-8 text-blue-100 text-sm">
+            <div className="flex items-center gap-2">
+              <Check className="w-5 h-5 text-green-400" />
+              <span>No credit card required</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Check className="w-5 h-5 text-green-400" />
+              <span>Free account setup</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Check className="w-5 h-5 text-green-400" />
+              <span>Cancel anytime</span>
+            </div>
+          </div>
         </div>
       </section>
 
