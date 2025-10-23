@@ -87,7 +87,7 @@ export async function PATCH(
     const body = await req.json();
     const { subject, html_content, description, is_active } = body;
 
-    const updates: any = {};
+    const updates: Record<string, string | boolean> = {};
     if (subject !== undefined) updates.subject = subject;
     if (html_content !== undefined) updates.html_content = html_content;
     if (description !== undefined) updates.description = description;

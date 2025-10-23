@@ -106,7 +106,7 @@ export function EditEmailTemplateDialog({
       const { data: { session } } = await (await import("@/lib/supabase")).supabase.auth.getSession();
 
       // Create test variables
-      const testVariables: any = {};
+      const testVariables: Record<string, string> = {};
       template.variables.forEach((variable: string) => {
         if (variable === "userName") testVariables[variable] = "John Doe";
         else if (variable === "userRole") testVariables[variable] = "Agent";
