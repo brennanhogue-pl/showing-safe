@@ -162,6 +162,17 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         });
       }
 
+      // Send welcome email (non-blocking)
+      if (data.user && data.session) {
+        fetch('/api/send-welcome-email', {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${data.session.access_token}`,
+            'Content-Type': 'application/json',
+          },
+        }).catch(err => console.error('⚠️ Failed to send welcome email:', err));
+      }
+
       return { error: null };
     } catch (error) {
       console.error("❌ Signup exception:", error);

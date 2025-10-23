@@ -8,6 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Mail, Edit, Send, Eye, CheckCircle, XCircle, Loader2 } from "lucide-react";
 import { EditEmailTemplateDialog } from "@/components/admin/EditEmailTemplateDialog";
+import { PreviewEmailTemplateDialog } from "@/components/admin/PreviewEmailTemplateDialog";
 
 interface EmailTemplate {
   id: string;
@@ -27,6 +28,7 @@ export default function EmailTemplatesPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [selectedTemplate, setSelectedTemplate] = useState<EmailTemplate | null>(null);
   const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
+  const [isPreviewDialogOpen, setIsPreviewDialogOpen] = useState(false);
 
   useEffect(() => {
     fetchTemplates();
@@ -156,7 +158,7 @@ export default function EmailTemplatesPage() {
                       size="sm"
                       onClick={() => {
                         setSelectedTemplate(template);
-                        // TODO: Implement preview dialog
+                        setIsPreviewDialogOpen(true);
                       }}
                       className="flex-1"
                     >
@@ -187,6 +189,15 @@ export default function EmailTemplatesPage() {
           open={isEditDialogOpen}
           onOpenChange={setIsEditDialogOpen}
           onSave={handleSave}
+        />
+      )}
+
+      {/* Preview Dialog */}
+      {selectedTemplate && (
+        <PreviewEmailTemplateDialog
+          template={selectedTemplate}
+          open={isPreviewDialogOpen}
+          onOpenChange={setIsPreviewDialogOpen}
         />
       )}
     </div>

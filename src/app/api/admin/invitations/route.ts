@@ -4,6 +4,7 @@ import { NextResponse } from "next/server";
 import { SendInvitationRequest } from "@/types";
 import crypto from "crypto";
 import { resend } from "@/lib/resend";
+import { renderEmailTemplate } from "@/lib/emailTemplates";
 import { publicEnv } from "@/lib/env";
 import * as React from "react";
 
@@ -185,48 +186,25 @@ export async function POST(req: Request) {
 
         const roleDisplayName = role.charAt(0).toUpperCase() + role.slice(1);
 
+        // Render invitation email template
+        const rendered = await renderEmailTemplate("invitation_email", {
+          inviterName: inviter?.full_name || "ShowingSafe Admin",
+          inviterEmail: inviter?.email || "admin@showingsafe.com",
+          userRole: roleDisplayName,
+          inviteUrl,
+          expiresInDays: String(expiresInDays),
+        });
+
+        if (!rendered) {
+          console.error("Failed to render invitation email template");
+          throw new Error("Failed to render email template");
+        }
+
         const { data, error: emailError } = await resend.emails.send({
           from: 'ShowingSafe <hello@notifications.showingsafe.co>',
           to: email,
-          subject: `You've been invited to join ShowingSafe`,
-          html: `
-            <!DOCTYPE html>
-            <html>
-              <head>
-                <meta charset="utf-8">
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-              </head>
-              <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Ubuntu, sans-serif; background-color: #f6f9fc; margin: 0; padding: 20px;">
-                <div style="background-color: #ffffff; max-width: 600px; margin: 0 auto; padding: 40px; border-radius: 8px;">
-                  <h1 style="color: #1f2937; font-size: 32px; text-align: center; margin-bottom: 30px;">
-                    You're invited to ShowingSafe
-                  </h1>
-
-                  <p style="color: #374151; font-size: 16px; line-height: 24px; margin-bottom: 20px;">
-                    <strong>${inviter?.full_name || 'ShowingSafe Admin'}</strong> (${inviter?.email || 'admin@showingsafe.com'}) has invited you to join ShowingSafe as a <strong>${roleDisplayName}</strong>.
-                  </p>
-
-                  <p style="color: #374151; font-size: 16px; line-height: 24px; margin-bottom: 30px;">
-                    ShowingSafe provides comprehensive protection for real estate showings, ensuring peace of mind for homeowners and agents alike.
-                  </p>
-
-                  <div style="text-align: center; margin: 40px 0;">
-                    <a href="${inviteUrl}" style="background-color: #3b82f6; color: #ffffff; padding: 14px 32px; text-decoration: none; border-radius: 8px; font-size: 16px; font-weight: bold; display: inline-block;">
-                      Accept Invitation
-                    </a>
-                  </div>
-
-                  <p style="color: #6b7280; font-size: 14px; line-height: 20px; margin-top: 30px;">
-                    This invitation will expire in 7 days. If you didn't expect this invitation, you can safely ignore this email.
-                  </p>
-
-                  <p style="color: #9ca3af; font-size: 12px; text-align: center; margin-top: 40px;">
-                    © ${new Date().getFullYear()} ShowingSafe. All rights reserved.
-                  </p>
-                </div>
-              </body>
-            </html>
-          `,
+          subject: rendered.subject,
+          html: rendered.html,
         });
 
         if (emailError) {

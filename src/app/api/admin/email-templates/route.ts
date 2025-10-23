@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { supabase } from "@/lib/supabase";
+import { supabaseAdmin } from "@/lib/supabaseAdmin";
 import { getAllEmailTemplates } from "@/lib/emailTemplates";
 
 // GET - List all email templates
@@ -20,8 +21,8 @@ export async function GET(req: Request) {
       return new NextResponse("Unauthorized", { status: 401 });
     }
 
-    // Verify user is an admin
-    const { data: profile } = await supabase
+    // Verify user is an admin (use supabaseAdmin to bypass RLS)
+    const { data: profile } = await supabaseAdmin
       .from("users")
       .select("role")
       .eq("id", user.id)
@@ -32,6 +33,8 @@ export async function GET(req: Request) {
     }
 
     const templates = await getAllEmailTemplates();
+
+    console.log(`📧 Fetched ${templates.length} email templates`);
 
     return NextResponse.json({ templates });
   } catch (err) {
