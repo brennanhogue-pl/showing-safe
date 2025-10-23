@@ -90,36 +90,42 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 px-4 py-12">
-      <div className="w-full max-w-md">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 px-4 py-12 relative overflow-hidden">
+      {/* Animated background blobs */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-float"></div>
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-float" style={{ animationDelay: "1.5s" }}></div>
+
+      <div className="w-full max-w-md relative z-10">
         {/* Logo */}
-        <div className="flex justify-center mb-8 cursor-pointer" onClick={() => router.push("/")}>
-          <div className="flex items-center gap-2">
-            <Shield className="w-8 h-8 text-blue-600" />
-            <h1 className="text-2xl font-bold text-gray-900">ShowingSafe</h1>
+        <div className="flex justify-center mb-8 cursor-pointer group" onClick={() => router.push("/")}>
+          <div className="flex items-center gap-3">
+            <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg">
+              <Shield className="w-7 h-7 text-white" />
+            </div>
+            <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">ShowingSafe</h1>
           </div>
         </div>
 
-        <Card className="border-2">
-          <CardHeader className="text-center pb-4">
-            <Badge className="mb-4 bg-blue-100 text-blue-800 hover:bg-blue-100 mx-auto">
+        <Card className="border-0 shadow-2xl rounded-3xl bg-white">
+          <CardHeader className="text-center pb-6 pt-10">
+            <Badge className="mb-5 bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-700 hover:to-purple-700 border-0 mx-auto px-5 py-2 text-sm font-bold rounded-full shadow-lg">
               For Real Estate Agents
             </Badge>
-            <CardTitle className="text-2xl">Create Your Free Account</CardTitle>
-            <CardDescription className="text-base">
+            <CardTitle className="text-3xl font-extrabold text-gray-900 mb-3">Create Your Free Account</CardTitle>
+            <CardDescription className="text-lg text-gray-600">
               Get started in under 2 minutes. No credit card required.
             </CardDescription>
           </CardHeader>
-          <CardContent>
+          <CardContent className="px-8 pb-10">
             <form onSubmit={handleSubmit} className="space-y-4">
               {error && (
-                <Alert variant="destructive">
-                  <AlertDescription>{error}</AlertDescription>
+                <Alert variant="destructive" className="rounded-2xl border-0 bg-red-50">
+                  <AlertDescription className="text-red-800">{error}</AlertDescription>
                 </Alert>
               )}
 
               <div className="space-y-2">
-                <Label htmlFor="fullName">Full Name</Label>
+                <Label htmlFor="fullName" className="text-base font-semibold text-gray-900">Full Name</Label>
                 <Input
                   id="fullName"
                   type="text"
@@ -128,11 +134,12 @@ export default function RegisterPage() {
                   onChange={(e) => setFullName(e.target.value)}
                   disabled={isLoading}
                   required
+                  className="h-12 rounded-xl border-gray-300 focus:border-blue-600 focus:ring-blue-600 text-base"
                 />
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="email">Email</Label>
+                <Label htmlFor="email" className="text-base font-semibold text-gray-900">Email</Label>
                 <Input
                   id="email"
                   type="email"
@@ -141,11 +148,12 @@ export default function RegisterPage() {
                   onChange={(e) => setEmail(e.target.value)}
                   disabled={isLoading}
                   required
+                  className="h-12 rounded-xl border-gray-300 focus:border-blue-600 focus:ring-blue-600 text-base"
                 />
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="password">Password</Label>
+                <Label htmlFor="password" className="text-base font-semibold text-gray-900">Password</Label>
                 <Input
                   id="password"
                   type="password"
@@ -155,14 +163,15 @@ export default function RegisterPage() {
                   disabled={isLoading}
                   required
                   minLength={6}
+                  className="h-12 rounded-xl border-gray-300 focus:border-blue-600 focus:ring-blue-600 text-base"
                 />
-                <p className="text-xs text-muted-foreground">
+                <p className="text-sm text-gray-500">
                   At least 6 characters
                 </p>
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="confirmPassword">Confirm Password</Label>
+                <Label htmlFor="confirmPassword" className="text-base font-semibold text-gray-900">Confirm Password</Label>
                 <Input
                   id="confirmPassword"
                   type="password"
@@ -172,23 +181,30 @@ export default function RegisterPage() {
                   disabled={isLoading}
                   required
                   minLength={6}
+                  className="h-12 rounded-xl border-gray-300 focus:border-blue-600 focus:ring-blue-600 text-base"
                 />
               </div>
 
               {/* What you get */}
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                <p className="text-sm font-semibold text-blue-900 mb-2">What you&apos;ll get:</p>
-                <ul className="space-y-1.5">
-                  <li className="flex items-center gap-2 text-sm text-blue-800">
-                    <Check className="w-4 h-4 text-blue-600 flex-shrink-0" />
+              <div className="bg-gradient-to-br from-blue-50 to-indigo-50 border-0 rounded-2xl p-5 shadow-inner">
+                <p className="text-base font-bold text-gray-900 mb-3">What you&apos;ll get:</p>
+                <ul className="space-y-2">
+                  <li className="flex items-center gap-3 text-base text-gray-700">
+                    <div className="w-6 h-6 bg-gradient-to-br from-green-500 to-emerald-500 rounded-full flex items-center justify-center flex-shrink-0">
+                      <Check className="w-4 h-4 text-white" />
+                    </div>
                     Access to your personal dashboard
                   </li>
-                  <li className="flex items-center gap-2 text-sm text-blue-800">
-                    <Check className="w-4 h-4 text-blue-600 flex-shrink-0" />
+                  <li className="flex items-center gap-3 text-base text-gray-700">
+                    <div className="w-6 h-6 bg-gradient-to-br from-green-500 to-emerald-500 rounded-full flex items-center justify-center flex-shrink-0">
+                      <Check className="w-4 h-4 text-white" />
+                    </div>
                     Choose your protection plan
                   </li>
-                  <li className="flex items-center gap-2 text-sm text-blue-800">
-                    <Check className="w-4 h-4 text-blue-600 flex-shrink-0" />
+                  <li className="flex items-center gap-3 text-base text-gray-700">
+                    <div className="w-6 h-6 bg-gradient-to-br from-green-500 to-emerald-500 rounded-full flex items-center justify-center flex-shrink-0">
+                      <Check className="w-4 h-4 text-white" />
+                    </div>
                     File claims instantly when needed
                   </li>
                 </ul>
@@ -196,22 +212,21 @@ export default function RegisterPage() {
 
               <Button
                 type="submit"
-                className="w-full"
-                size="lg"
+                className="w-full h-14 text-lg font-bold bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02] border-0 mt-6"
                 disabled={isLoading}
               >
                 {isLoading ? "Creating account..." : "Create Free Account"}
               </Button>
 
-              <p className="text-xs text-center text-gray-500">
+              <p className="text-sm text-center text-gray-500 pt-2">
                 By creating an account, you agree to our Terms of Service and Privacy Policy
               </p>
 
-              <div className="text-center text-sm text-gray-600 pt-2">
+              <div className="text-center text-base text-gray-600 pt-2">
                 Already have an account?{" "}
                 <Link
                   href="/auth/login"
-                  className="text-blue-600 hover:underline font-medium"
+                  className="text-blue-600 hover:text-blue-700 font-semibold hover:underline"
                 >
                   Sign in
                 </Link>
@@ -222,10 +237,16 @@ export default function RegisterPage() {
 
         {/* Trust indicators */}
         <div className="mt-6 text-center">
-          <p className="text-sm text-gray-600 mb-2">Trusted by real estate professionals</p>
-          <div className="flex items-center justify-center gap-4 text-xs text-gray-500">
-            <span>✓ No credit card required</span>
-            <span>✓ Cancel anytime</span>
+          <p className="text-sm text-gray-600 mb-3">Trusted by real estate professionals</p>
+          <div className="flex items-center justify-center gap-6 text-sm text-gray-600">
+            <div className="flex items-center gap-2">
+              <Check className="w-4 h-4 text-green-600" />
+              <span>No credit card required</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Check className="w-4 h-4 text-green-600" />
+              <span>Cancel anytime</span>
+            </div>
           </div>
         </div>
       </div>

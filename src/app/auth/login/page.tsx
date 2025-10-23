@@ -86,32 +86,39 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
-      <div className="w-full max-w-md">
-        <div className="flex justify-center mb-8">
-          <div className="flex items-center gap-2">
-            <Shield className="w-8 h-8 text-blue-600" />
-            <h1 className="text-2xl font-bold text-gray-900">ShowingSafe</h1>
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 px-4 py-12 relative overflow-hidden">
+      {/* Animated background blobs */}
+      <div className="absolute top-0 left-0 w-96 h-96 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-float"></div>
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-float" style={{ animationDelay: "1s" }}></div>
+
+      <div className="w-full max-w-md relative z-10">
+        {/* Logo */}
+        <div className="flex justify-center mb-8 cursor-pointer group" onClick={() => router.push("/")}>
+          <div className="flex items-center gap-3">
+            <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg">
+              <Shield className="w-7 h-7 text-white" />
+            </div>
+            <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">ShowingSafe</h1>
           </div>
         </div>
 
-        <Card>
-          <CardHeader>
-            <CardTitle>Welcome Back</CardTitle>
-            <CardDescription>
+        <Card className="border-0 shadow-2xl rounded-3xl bg-white">
+          <CardHeader className="text-center pb-6 pt-10">
+            <CardTitle className="text-3xl font-extrabold text-gray-900 mb-3">Welcome Back</CardTitle>
+            <CardDescription className="text-lg text-gray-600">
               Sign in to your account to manage your coverage
             </CardDescription>
           </CardHeader>
-          <CardContent>
-            <form onSubmit={handleSubmit} className="space-y-4">
+          <CardContent className="px-8 pb-10">
+            <form onSubmit={handleSubmit} className="space-y-5">
               {error && (
-                <Alert variant="destructive">
-                  <AlertDescription>{error}</AlertDescription>
+                <Alert variant="destructive" className="rounded-2xl border-0 bg-red-50">
+                  <AlertDescription className="text-red-800">{error}</AlertDescription>
                 </Alert>
               )}
 
               <div className="space-y-2">
-                <Label htmlFor="email">Email</Label>
+                <Label htmlFor="email" className="text-base font-semibold text-gray-900">Email</Label>
                 <Input
                   id="email"
                   type="email"
@@ -120,11 +127,12 @@ export default function LoginPage() {
                   onChange={(e) => setEmail(e.target.value)}
                   disabled={isLoading}
                   required
+                  className="h-12 rounded-xl border-gray-300 focus:border-blue-600 focus:ring-blue-600 text-base"
                 />
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="password">Password</Label>
+                <Label htmlFor="password" className="text-base font-semibold text-gray-900">Password</Label>
                 <Input
                   id="password"
                   type="password"
@@ -133,22 +141,23 @@ export default function LoginPage() {
                   onChange={(e) => setPassword(e.target.value)}
                   disabled={isLoading}
                   required
+                  className="h-12 rounded-xl border-gray-300 focus:border-blue-600 focus:ring-blue-600 text-base"
                 />
               </div>
 
               <Button
                 type="submit"
-                className="w-full"
+                className="w-full h-14 text-lg font-bold bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02] border-0 mt-6"
                 disabled={isLoading}
               >
                 {isLoading ? "Signing in..." : "Sign In"}
               </Button>
 
-              <div className="text-center text-sm text-gray-600">
+              <div className="text-center text-base text-gray-600 pt-4">
                 Don&apos;t have an account?{" "}
                 <Link
                   href="/auth/register"
-                  className="text-blue-600 hover:underline font-medium"
+                  className="text-blue-600 hover:text-blue-700 font-semibold hover:underline"
                 >
                   Sign up
                 </Link>
@@ -156,6 +165,11 @@ export default function LoginPage() {
             </form>
           </CardContent>
         </Card>
+
+        {/* Trust indicators */}
+        <div className="mt-6 text-center">
+          <p className="text-sm text-gray-600">Trusted by real estate professionals nationwide</p>
+        </div>
       </div>
     </div>
   );

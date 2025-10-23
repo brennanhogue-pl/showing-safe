@@ -279,7 +279,7 @@
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Premium Gradient Backgrounds */
+/* Premium Gradient Backgrounds - ClickUp Style */
 .gradient-blue {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
@@ -290,6 +290,14 @@
 
 .gradient-sunset {
   background: linear-gradient(135deg, #F093FB 0%, #F5576C 100%);
+}
+
+.gradient-purple-pink {
+  background: linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%);
+}
+
+.gradient-blue-purple {
+  background: linear-gradient(135deg, #3B82F6 0%, #8B5CF6 100%);
 }
 
 /* Premium Shadows */

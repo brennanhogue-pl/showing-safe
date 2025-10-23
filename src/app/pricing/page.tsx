@@ -6,6 +6,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardDescription } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Shield, Check, ArrowRight, Zap, Star } from "lucide-react";
+import { Footer } from "@/components/Footer";
+import { FloatingCTA } from "@/components/FloatingCTA";
 
 export default function PricingPage() {
   const router = useRouter();
@@ -13,128 +15,154 @@ export default function PricingPage() {
   return (
     <main className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
       {/* Navigation */}
-      <nav className="bg-white border-b border-gray-200">
+      <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center gap-2 cursor-pointer" onClick={() => router.push("/")}>
-              <Shield className="w-8 h-8 text-blue-600" />
-              <span className="text-2xl font-bold text-gray-900">ShowingSafe</span>
+          <div className="flex justify-between items-center h-18">
+            <div className="flex items-center gap-3 cursor-pointer group" onClick={() => router.push("/")}>
+              <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg">
+                <Shield className="w-6 h-6 text-white" />
+              </div>
+              <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+                ShowingSafe
+              </span>
             </div>
-            <div className="hidden md:flex items-center gap-8">
-              <button onClick={() => router.push("/how-it-works")} className="text-gray-600 hover:text-gray-900">How It Works</button>
-              <button onClick={() => router.push("/pricing")} className="text-gray-900 font-semibold">Pricing</button>
-              <button onClick={() => router.push("/#faq")} className="text-gray-600 hover:text-gray-900">FAQ</button>
-              <Button variant="ghost" onClick={() => router.push("/auth/login")}>
-                Sign In
-              </Button>
-              <Button onClick={() => router.push("/auth/register")}>
-                Get Started
-              </Button>
+            <div className="hidden md:flex items-center gap-1">
+              <button onClick={() => router.push("/how-it-works")} className="px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-200 font-medium">How It Works</button>
+              <button onClick={() => router.push("/pricing")} className="px-4 py-2 text-blue-600 bg-blue-50 rounded-lg font-semibold">Pricing</button>
+              <button onClick={() => router.push("/#faq")} className="px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-200 font-medium">FAQ</button>
+              <div className="flex items-center gap-3 ml-4 pl-4 border-l border-gray-200">
+                <Button variant="ghost" className="hover:bg-gray-100" onClick={() => router.push("/auth/login")}>
+                  Sign In
+                </Button>
+                <Button className="shadow-premium-colored btn-premium" onClick={() => router.push("/auth/register")}>
+                  Get Started
+                </Button>
+              </div>
             </div>
           </div>
         </div>
       </nav>
 
       {/* Header */}
-      <section className="pt-20 pb-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto text-center">
-          <Badge className="mb-6 bg-blue-100 text-blue-800 hover:bg-blue-100">
+      <section className="pt-24 pb-40 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        <div className="absolute inset-0 bg-white">
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-br from-blue-400 to-purple-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-float"></div>
+          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-to-br from-pink-400 to-purple-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-float" style={{ animationDelay: "1s" }}></div>
+        </div>
+        <div className="max-w-7xl mx-auto text-center relative z-10">
+          <Badge className="mb-8 bg-gradient-to-r from-blue-600 to-purple-600 text-white border-0 px-6 py-2.5 text-base font-semibold rounded-full shadow-lg hover:from-blue-700 hover:to-purple-700">
             Simple, Transparent Pricing
           </Badge>
-          <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
-            Protection That Fits Your Needs
+          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-gray-900 mb-8 tracking-tight leading-[1.1]">
+            Protection That Fits Your{" "}
+            <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+              Needs
+            </span>
           </h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-xl sm:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
             Choose the plan that works for you. No hidden fees, no surprises.
           </p>
         </div>
       </section>
 
       {/* Pricing Cards */}
-      <section className="pb-20 px-4 sm:px-6 lg:px-8">
+      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-white relative">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-8">
             {/* Agent Protection Plan */}
-            <Card className="border-2 border-blue-200 shadow-xl relative overflow-hidden">
-              <div className="absolute top-0 right-0 bg-blue-600 text-white px-4 py-1 text-sm font-semibold">
+            <Card className="border-0 shadow-xl hover:shadow-2xl relative overflow-hidden hover-lift transition-all duration-300 rounded-3xl bg-white">
+              <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-blue-200 to-purple-200 rounded-full -mr-20 -mt-20"></div>
+              <Badge className="absolute top-6 right-6 bg-gradient-to-r from-blue-600 to-purple-600 text-white border-0 px-4 py-1.5 text-sm font-bold rounded-full z-10">
                 Most Popular
-              </div>
-              <CardHeader className="text-center pb-8 pt-8">
-                <div className="flex justify-center mb-4">
-                  <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center">
-                    <Shield className="w-8 h-8 text-blue-600" />
+              </Badge>
+              <CardHeader className="text-center pb-8 pt-10 relative z-10">
+                <div className="flex justify-center mb-6">
+                  <div className="w-20 h-20 bg-gradient-to-br from-blue-600 to-purple-600 rounded-3xl flex items-center justify-center shadow-lg">
+                    <Shield className="w-10 h-10 text-white" />
                   </div>
                 </div>
-                <h2 className="text-2xl font-bold mb-2">Agent Protection</h2>
-                <CardDescription className="text-base">
+                <h2 className="text-3xl font-bold mb-3 text-gray-900">Agent Protection</h2>
+                <CardDescription className="text-lg text-gray-600">
                   Perfect for agents who show homes regularly
                 </CardDescription>
-                <div className="mt-6">
+                <div className="mt-8">
                   <div className="flex items-baseline justify-center gap-2">
-                    <span className="text-5xl font-bold text-gray-900">$9.99</span>
-                    <span className="text-gray-600">/month</span>
+                    <span className="text-6xl font-extrabold text-gray-900">$9.99</span>
+                    <span className="text-2xl text-gray-600">/month</span>
                   </div>
-                  <p className="text-sm text-gray-500 mt-2">Billed monthly • Cancel anytime</p>
+                  <p className="text-base text-gray-500 mt-3">Billed monthly • Cancel anytime</p>
                 </div>
               </CardHeader>
-              <CardContent className="space-y-6">
+              <CardContent className="space-y-6 relative z-10">
                 <div className="space-y-4">
-                  <h3 className="font-semibold text-lg">What&apos;s Included:</h3>
-                  <ul className="space-y-3">
+                  <h3 className="font-bold text-xl text-gray-900">What&apos;s Included:</h3>
+                  <ul className="space-y-4">
                     <li className="flex items-start gap-3">
-                      <Check className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+                      <div className="w-6 h-6 bg-gradient-to-br from-green-500 to-emerald-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <Check className="w-4 h-4 text-white" />
+                      </div>
                       <div>
-                        <p className="font-medium">Up to $30,000 per claim</p>
-                        <p className="text-sm text-gray-600">Maximum coverage for each incident</p>
+                        <p className="font-semibold text-lg text-gray-900">Up to $30,000 per claim</p>
+                        <p className="text-base text-gray-600">Maximum coverage for each incident</p>
                       </div>
                     </li>
                     <li className="flex items-start gap-3">
-                      <Check className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+                      <div className="w-6 h-6 bg-gradient-to-br from-green-500 to-emerald-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <Check className="w-4 h-4 text-white" />
+                      </div>
                       <div>
-                        <p className="font-medium">Unlimited claims</p>
-                        <p className="text-sm text-gray-600">File as many claims as you need</p>
+                        <p className="font-semibold text-lg text-gray-900">Unlimited claims</p>
+                        <p className="text-base text-gray-600">File as many claims as you need</p>
                       </div>
                     </li>
                     <li className="flex items-start gap-3">
-                      <Check className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+                      <div className="w-6 h-6 bg-gradient-to-br from-green-500 to-emerald-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <Check className="w-4 h-4 text-white" />
+                      </div>
                       <div>
-                        <p className="font-medium">Coverage on any showing</p>
-                        <p className="text-sm text-gray-600">Protected when showing any property</p>
+                        <p className="font-semibold text-lg text-gray-900">Coverage on any showing</p>
+                        <p className="text-base text-gray-600">Protected when showing any property</p>
                       </div>
                     </li>
                     <li className="flex items-start gap-3">
-                      <Check className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+                      <div className="w-6 h-6 bg-gradient-to-br from-green-500 to-emerald-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <Check className="w-4 h-4 text-white" />
+                      </div>
                       <div>
-                        <p className="font-medium">Fast reimbursement</p>
-                        <p className="text-sm text-gray-600">Get paid quickly after approval</p>
+                        <p className="font-semibold text-lg text-gray-900">Fast reimbursement</p>
+                        <p className="text-base text-gray-600">Get paid quickly after approval</p>
                       </div>
                     </li>
                     <li className="flex items-start gap-3">
-                      <Check className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+                      <div className="w-6 h-6 bg-gradient-to-br from-green-500 to-emerald-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <Check className="w-4 h-4 text-white" />
+                      </div>
                       <div>
-                        <p className="font-medium">Easy online claims</p>
-                        <p className="text-sm text-gray-600">File claims from your phone or computer</p>
+                        <p className="font-semibold text-lg text-gray-900">Easy online claims</p>
+                        <p className="text-base text-gray-600">File claims from your phone or computer</p>
                       </div>
                     </li>
                   </ul>
                 </div>
 
-                <div className="pt-4">
-                  <Button size="lg" className="w-full" onClick={() => router.push("/auth/register")}>
+                <div className="pt-6">
+                  <Button size="lg" className="w-full py-7 text-lg font-bold bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 rounded-2xl shadow-lg hover:shadow-xl transition-all group border-0" onClick={() => router.push("/auth/register")}>
                     Get Protected Now
-                    <ArrowRight className="ml-2 h-5 w-5" />
+                    <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                   </Button>
-                  <p className="text-center text-sm text-gray-500 mt-3">
+                  <p className="text-center text-base text-gray-500 mt-4">
                     No credit card required to create account
                   </p>
                 </div>
 
-                <div className="bg-blue-50 rounded-lg p-4 border border-blue-100">
-                  <div className="flex items-start gap-3">
-                    <Zap className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" />
+                <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl p-5 border-0">
+                  <div className="flex items-start gap-4">
+                    <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl flex items-center justify-center flex-shrink-0">
+                      <Zap className="w-5 h-5 text-white" />
+                    </div>
                     <div>
-                      <p className="font-semibold text-sm text-blue-900">Perfect for:</p>
-                      <p className="text-sm text-blue-800">
+                      <p className="font-bold text-base text-gray-900 mb-1">Perfect for:</p>
+                      <p className="text-base text-gray-700">
                         Active agents who show multiple properties and want peace of mind on every showing
                       </p>
                     </div>
@@ -144,83 +172,96 @@ export default function PricingPage() {
             </Card>
 
             {/* Listing Protection */}
-            <Card className="border-2 shadow-xl">
-              <CardHeader className="text-center pb-8 pt-8">
-                <div className="flex justify-center mb-4">
-                  <div className="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center">
-                    <Star className="w-8 h-8 text-indigo-600" />
+            <Card className="border-0 shadow-xl hover:shadow-2xl relative overflow-hidden hover-lift transition-all duration-300 rounded-3xl bg-white">
+              <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-purple-200 to-pink-200 rounded-full -mr-20 -mt-20"></div>
+              <CardHeader className="text-center pb-8 pt-10 relative z-10">
+                <div className="flex justify-center mb-6">
+                  <div className="w-20 h-20 bg-gradient-to-br from-purple-600 to-pink-600 rounded-3xl flex items-center justify-center shadow-lg">
+                    <Star className="w-10 h-10 text-white" />
                   </div>
                 </div>
-                <h2 className="text-2xl font-bold mb-2">Listing Protection</h2>
-                <CardDescription className="text-base">
+                <h2 className="text-3xl font-bold mb-3 text-gray-900">Listing Protection</h2>
+                <CardDescription className="text-lg text-gray-600">
                   Protect your seller&apos;s home during the listing period
                 </CardDescription>
-                <div className="mt-6">
+                <div className="mt-8">
                   <div className="flex items-baseline justify-center gap-2">
-                    <span className="text-5xl font-bold text-gray-900">$99</span>
-                    <span className="text-gray-600">/listing</span>
+                    <span className="text-6xl font-extrabold text-gray-900">$99</span>
+                    <span className="text-2xl text-gray-600">/listing</span>
                   </div>
-                  <p className="text-sm text-gray-500 mt-2">One-time fee • 90-day coverage</p>
+                  <p className="text-base text-gray-500 mt-3">One-time fee • 90-day coverage</p>
                 </div>
               </CardHeader>
-              <CardContent className="space-y-6">
+              <CardContent className="space-y-6 relative z-10">
                 <div className="space-y-4">
-                  <h3 className="font-semibold text-lg">What&apos;s Included:</h3>
-                  <ul className="space-y-3">
+                  <h3 className="font-bold text-xl text-gray-900">What&apos;s Included:</h3>
+                  <ul className="space-y-4">
                     <li className="flex items-start gap-3">
-                      <Check className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+                      <div className="w-6 h-6 bg-gradient-to-br from-green-500 to-emerald-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <Check className="w-4 h-4 text-white" />
+                      </div>
                       <div>
-                        <p className="font-medium">Up to $30,000 per claim</p>
-                        <p className="text-sm text-gray-600">Maximum coverage for each incident</p>
+                        <p className="font-semibold text-lg text-gray-900">Up to $30,000 per claim</p>
+                        <p className="text-base text-gray-600">Maximum coverage for each incident</p>
                       </div>
                     </li>
                     <li className="flex items-start gap-3">
-                      <Check className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+                      <div className="w-6 h-6 bg-gradient-to-br from-green-500 to-emerald-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <Check className="w-4 h-4 text-white" />
+                      </div>
                       <div>
-                        <p className="font-medium">Unlimited claims (90 days)</p>
-                        <p className="text-sm text-gray-600">File multiple claims during coverage period</p>
+                        <p className="font-semibold text-lg text-gray-900">Unlimited claims (90 days)</p>
+                        <p className="text-base text-gray-600">File multiple claims during coverage period</p>
                       </div>
                     </li>
                     <li className="flex items-start gap-3">
-                      <Check className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+                      <div className="w-6 h-6 bg-gradient-to-br from-green-500 to-emerald-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <Check className="w-4 h-4 text-white" />
+                      </div>
                       <div>
-                        <p className="font-medium">Covers all showings</p>
-                        <p className="text-sm text-gray-600">Protection for damages by any agent or client</p>
+                        <p className="font-semibold text-lg text-gray-900">Covers all showings</p>
+                        <p className="text-base text-gray-600">Protection for damages by any agent or client</p>
                       </div>
                     </li>
                     <li className="flex items-start gap-3">
-                      <Check className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+                      <div className="w-6 h-6 bg-gradient-to-br from-green-500 to-emerald-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <Check className="w-4 h-4 text-white" />
+                      </div>
                       <div>
-                        <p className="font-medium">One-time payment</p>
-                        <p className="text-sm text-gray-600">No recurring fees for this listing</p>
+                        <p className="font-semibold text-lg text-gray-900">One-time payment</p>
+                        <p className="text-base text-gray-600">No recurring fees for this listing</p>
                       </div>
                     </li>
                     <li className="flex items-start gap-3">
-                      <Check className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+                      <div className="w-6 h-6 bg-gradient-to-br from-green-500 to-emerald-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <Check className="w-4 h-4 text-white" />
+                      </div>
                       <div>
-                        <p className="font-medium">Purchase multiple listings</p>
-                        <p className="text-sm text-gray-600">Protect as many properties as you need</p>
+                        <p className="font-semibold text-lg text-gray-900">Purchase multiple listings</p>
+                        <p className="text-base text-gray-600">Protect as many properties as you need</p>
                       </div>
                     </li>
                   </ul>
                 </div>
 
-                <div className="pt-4">
-                  <Button size="lg" variant="outline" className="w-full" onClick={() => router.push("/auth/register")}>
+                <div className="pt-6">
+                  <Button size="lg" variant="outline" className="w-full py-7 text-lg font-bold border-2 border-purple-600 text-purple-600 hover:bg-purple-50 rounded-2xl hover:shadow-lg transition-all" onClick={() => router.push("/auth/register")}>
                     Protect a Listing
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Button>
-                  <p className="text-center text-sm text-gray-500 mt-3">
+                  <p className="text-center text-base text-gray-500 mt-4">
                     Purchase after creating your account
                   </p>
                 </div>
 
-                <div className="bg-indigo-50 rounded-lg p-4 border border-indigo-100">
-                  <div className="flex items-start gap-3">
-                    <Zap className="w-5 h-5 text-indigo-600 mt-0.5 flex-shrink-0" />
+                <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-5 border-0">
+                  <div className="flex items-start gap-4">
+                    <div className="w-10 h-10 bg-gradient-to-br from-purple-600 to-pink-600 rounded-xl flex items-center justify-center flex-shrink-0">
+                      <Zap className="w-5 h-5 text-white" />
+                    </div>
                     <div>
-                      <p className="font-semibold text-sm text-indigo-900">Perfect for:</p>
-                      <p className="text-sm text-indigo-800">
+                      <p className="font-bold text-base text-gray-900 mb-1">Perfect for:</p>
+                      <p className="text-base text-gray-700">
                         Protecting high-value listings or properties with valuable furnishings during showings
                       </p>
                     </div>
@@ -231,16 +272,17 @@ export default function PricingPage() {
           </div>
 
           {/* Can I have both? */}
-          <div className="mt-12 max-w-3xl mx-auto">
-            <Card className="bg-gradient-to-br from-blue-600 to-indigo-700 text-white border-0">
-              <CardContent className="pt-6 text-center">
-                <h3 className="text-2xl font-bold mb-2">Can I have both?</h3>
-                <p className="text-blue-100 mb-4">
+          <div className="mt-16 max-w-4xl mx-auto">
+            <Card className="bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 text-white border-0 shadow-2xl rounded-3xl overflow-hidden relative">
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-400/20 to-purple-400/20"></div>
+              <CardContent className="pt-10 pb-10 text-center relative z-10">
+                <h3 className="text-3xl sm:text-4xl font-extrabold mb-4">Can I have both?</h3>
+                <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto leading-relaxed">
                   Absolutely! Many agents subscribe to Agent Protection for personal coverage, and add Listing Protection for their high-value properties. It&apos;s the ultimate peace of mind package.
                 </p>
-                <Button size="lg" variant="secondary" onClick={() => router.push("/auth/register")}>
+                <Button size="lg" className="bg-white text-purple-600 hover:bg-gray-50 font-bold text-lg px-10 py-7 rounded-2xl shadow-xl hover:shadow-2xl transition-all hover:scale-105" onClick={() => router.push("/auth/register")}>
                   Get Started with Both
-                  <ArrowRight className="ml-2 h-5 w-5" />
+                  <ArrowRight className="ml-2 h-6 w-6" />
                 </Button>
               </CardContent>
             </Card>
@@ -387,39 +429,39 @@ export default function PricingPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-600 to-indigo-700 text-white">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-            Ready to Get Protected?
+      <section className="py-28 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, rgb(99 102 241) 1px, transparent 0)', backgroundSize: '40px 40px' }}></div>
+        </div>
+        <div className="absolute top-0 left-0 w-full h-full">
+          <div className="absolute top-20 left-20 w-72 h-72 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-float"></div>
+          <div className="absolute bottom-20 right-20 w-72 h-72 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-float" style={{ animationDelay: "1s" }}></div>
+        </div>
+        <div className="max-w-5xl mx-auto text-center relative z-10">
+          <Badge className="mb-8 bg-gradient-to-r from-blue-600 to-purple-600 text-white border-0 px-6 py-2.5 text-base font-semibold rounded-full shadow-lg">Ready to Get Started?</Badge>
+          <h2 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold mb-8 text-gray-900 tracking-tight leading-[1.1]">
+            Ready to Get{" "}
+            <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+              Protected
+            </span>
+            ?
           </h2>
-          <p className="text-xl text-blue-100 mb-8">
+          <p className="text-xl sm:text-2xl text-gray-600 mb-12 leading-relaxed max-w-3xl mx-auto">
             Join hundreds of agents who show homes with confidence.
           </p>
-          <Button size="lg" variant="secondary" className="text-lg px-8 py-6" onClick={() => router.push("/auth/register")}>
+          <Button size="lg" className="text-xl px-14 py-8 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 shadow-2xl hover:shadow-premium-lg hover:scale-105 transition-all duration-300 rounded-2xl font-bold group border-0" onClick={() => router.push("/auth/register")}>
             Create Your Free Account
-            <ArrowRight className="ml-2 h-5 w-5" />
+            <ArrowRight className="ml-2 h-6 w-6 group-hover:translate-x-1 transition-transform" />
           </Button>
-          <p className="text-sm text-blue-100 mt-4">Choose your plan after signing up</p>
+          <p className="text-base text-gray-500 mt-6">Choose your plan after signing up</p>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-gray-400 py-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto text-center">
-          <div className="flex items-center justify-center gap-2 mb-4">
-            <Shield className="w-6 h-6" />
-            <span className="text-xl font-bold text-white">ShowingSafe</span>
-          </div>
-          <p className="mb-4">Protection for real estate agents on every showing</p>
-          <div className="flex justify-center gap-6 mb-4">
-            <Link href="/" className="hover:text-white">Home</Link>
-            <Link href="/pricing" className="hover:text-white">Pricing</Link>
-            <Link href="/how-it-works" className="hover:text-white">How It Works</Link>
-            <Link href="/#faq" className="hover:text-white">FAQ</Link>
-          </div>
-          <p className="text-sm">&copy; 2025 ShowingSafe. All rights reserved.</p>
-        </div>
-      </footer>
+      <Footer />
+
+      {/* Floating CTA */}
+      <FloatingCTA />
     </main>
   );
 }

@@ -6,6 +6,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Shield, ArrowRight, UserPlus, CreditCard, Home, FileText, Upload, CheckCircle, Clock, DollarSign, AlertCircle } from "lucide-react";
+import { Footer } from "@/components/Footer";
+import { FloatingCTA } from "@/components/FloatingCTA";
 
 export default function HowItWorksPage() {
   const router = useRouter();
@@ -13,61 +15,73 @@ export default function HowItWorksPage() {
   return (
     <main className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
       {/* Navigation */}
-      <nav className="bg-white border-b border-gray-200">
+      <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center gap-2 cursor-pointer" onClick={() => router.push("/")}>
-              <Shield className="w-8 h-8 text-blue-600" />
-              <span className="text-2xl font-bold text-gray-900">ShowingSafe</span>
+          <div className="flex justify-between items-center h-18">
+            <div className="flex items-center gap-3 cursor-pointer group" onClick={() => router.push("/")}>
+              <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg">
+                <Shield className="w-6 h-6 text-white" />
+              </div>
+              <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+                ShowingSafe
+              </span>
             </div>
-            <div className="hidden md:flex items-center gap-8">
-              <button onClick={() => router.push("/how-it-works")} className="text-gray-900 font-semibold">How It Works</button>
-              <button onClick={() => router.push("/pricing")} className="text-gray-600 hover:text-gray-900">Pricing</button>
-              <button onClick={() => router.push("/#faq")} className="text-gray-600 hover:text-gray-900">FAQ</button>
-              <Button variant="ghost" onClick={() => router.push("/auth/login")}>
-                Sign In
-              </Button>
-              <Button onClick={() => router.push("/auth/register")}>
-                Get Started
-              </Button>
+            <div className="hidden md:flex items-center gap-1">
+              <button onClick={() => router.push("/how-it-works")} className="px-4 py-2 text-blue-600 bg-blue-50 rounded-lg font-semibold">How It Works</button>
+              <button onClick={() => router.push("/pricing")} className="px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-200 font-medium">Pricing</button>
+              <button onClick={() => router.push("/#faq")} className="px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-200 font-medium">FAQ</button>
+              <div className="flex items-center gap-3 ml-4 pl-4 border-l border-gray-200">
+                <Button variant="ghost" className="hover:bg-gray-100" onClick={() => router.push("/auth/login")}>
+                  Sign In
+                </Button>
+                <Button className="shadow-premium-colored btn-premium" onClick={() => router.push("/auth/register")}>
+                  Get Started
+                </Button>
+              </div>
             </div>
           </div>
         </div>
       </nav>
 
       {/* Header */}
-      <section className="pt-20 pb-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto text-center">
-          <Badge className="mb-6 bg-blue-100 text-blue-800 hover:bg-blue-100">
+      <section className="pt-24 pb-40 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        <div className="absolute inset-0 bg-white">
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-br from-blue-400 to-purple-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-float"></div>
+          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-to-br from-pink-400 to-purple-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-float" style={{ animationDelay: "1s" }}></div>
+        </div>
+        <div className="max-w-7xl mx-auto text-center relative z-10">
+          <Badge className="mb-8 bg-gradient-to-r from-blue-600 to-purple-600 text-white border-0 px-6 py-2.5 text-base font-semibold rounded-full shadow-lg hover:from-blue-700 hover:to-purple-700">
             Simple 3-Step Process
           </Badge>
-          <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
-            Protection in Minutes, Peace of Mind Forever
+          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-gray-900 mb-8 tracking-tight leading-[1.1]">
+            Protection in Minutes, <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">Peace of Mind</span> Forever
           </h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-xl sm:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
             Getting protected is fast and easy. Here&apos;s exactly how ShowingSafe works from sign-up to claim payout.
           </p>
         </div>
       </section>
 
       {/* Main 3 Steps */}
-      <section className="pb-20 px-4 sm:px-6 lg:px-8">
+      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-white relative">
         <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-12 mb-16">
             {/* Step 1 */}
-            <Card className="border-2 shadow-xl">
-              <CardContent className="pt-8 text-center">
-                <div className="w-20 h-20 bg-blue-600 text-white rounded-full flex items-center justify-center text-3xl font-bold mx-auto mb-6">
+            <Card className="border-0 shadow-xl hover:shadow-2xl hover-lift transition-all duration-300 rounded-3xl bg-white">
+              <CardContent className="pt-10 pb-10 text-center">
+                <div className="w-24 h-24 bg-gradient-to-br from-blue-600 to-blue-700 text-white rounded-3xl flex items-center justify-center text-4xl font-extrabold mx-auto mb-6 shadow-lg">
                   1
                 </div>
-                <UserPlus className="w-12 h-12 text-blue-600 mx-auto mb-4" />
-                <h3 className="text-2xl font-bold mb-3">Sign Up</h3>
-                <p className="text-gray-600 mb-6">
+                <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-500 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                  <UserPlus className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-3xl font-bold mb-4 text-gray-900">Sign Up</h3>
+                <p className="text-gray-600 mb-8 text-lg leading-relaxed">
                   Create your free account in under 2 minutes. No credit card required to get started.
                 </p>
-                <div className="bg-blue-50 rounded-lg p-4 text-left">
-                  <p className="text-sm font-semibold text-blue-900 mb-2">What you&apos;ll need:</p>
-                  <ul className="text-sm text-blue-800 space-y-1">
+                <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-5 text-left border-0">
+                  <p className="text-base font-bold text-gray-900 mb-3">What you&apos;ll need:</p>
+                  <ul className="text-base text-gray-700 space-y-2">
                     <li>• Your name and email</li>
                     <li>• A secure password</li>
                     <li>• That&apos;s it!</li>
@@ -77,22 +91,21 @@ export default function HowItWorksPage() {
             </Card>
 
             {/* Step 2 */}
-            <Card className="border-2 shadow-xl border-blue-200 relative">
-              <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-blue-600 text-white px-4 py-1 rounded-full text-sm font-semibold">
-                You Are Here
-              </div>
-              <CardContent className="pt-8 text-center">
-                <div className="w-20 h-20 bg-blue-600 text-white rounded-full flex items-center justify-center text-3xl font-bold mx-auto mb-6">
+            <Card className="border-0 shadow-xl hover:shadow-2xl hover-lift transition-all duration-300 rounded-3xl bg-white relative">
+              <CardContent className="pt-10 pb-10 text-center">
+                <div className="w-24 h-24 bg-gradient-to-br from-purple-600 to-pink-600 text-white rounded-3xl flex items-center justify-center text-4xl font-extrabold mx-auto mb-6 shadow-lg">
                   2
                 </div>
-                <CreditCard className="w-12 h-12 text-blue-600 mx-auto mb-4" />
-                <h3 className="text-2xl font-bold mb-3">Choose Protection</h3>
-                <p className="text-gray-600 mb-6">
+                <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                  <CreditCard className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-3xl font-bold mb-4 text-gray-900">Choose Protection</h3>
+                <p className="text-gray-600 mb-8 text-lg leading-relaxed">
                   Select the plan that fits your needs and complete your secure payment.
                 </p>
-                <div className="bg-blue-50 rounded-lg p-4 text-left">
-                  <p className="text-sm font-semibold text-blue-900 mb-2">Your options:</p>
-                  <ul className="text-sm text-blue-800 space-y-1">
+                <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-5 text-left border-0">
+                  <p className="text-base font-bold text-gray-900 mb-3">Your options:</p>
+                  <ul className="text-base text-gray-700 space-y-2">
                     <li>• Agent Protection: $9.99/month</li>
                     <li>• Listing Protection: $99/listing</li>
                     <li>• Or get both for full coverage</li>
@@ -102,19 +115,21 @@ export default function HowItWorksPage() {
             </Card>
 
             {/* Step 3 */}
-            <Card className="border-2 shadow-xl">
-              <CardContent className="pt-8 text-center">
-                <div className="w-20 h-20 bg-blue-600 text-white rounded-full flex items-center justify-center text-3xl font-bold mx-auto mb-6">
+            <Card className="border-0 shadow-xl hover:shadow-2xl hover-lift transition-all duration-300 rounded-3xl bg-white">
+              <CardContent className="pt-10 pb-10 text-center">
+                <div className="w-24 h-24 bg-gradient-to-br from-green-600 to-emerald-600 text-white rounded-3xl flex items-center justify-center text-4xl font-extrabold mx-auto mb-6 shadow-lg">
                   3
                 </div>
-                <Home className="w-12 h-12 text-blue-600 mx-auto mb-4" />
-                <h3 className="text-2xl font-bold mb-3">Show with Confidence</h3>
-                <p className="text-gray-600 mb-6">
+                <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-500 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                  <Home className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-3xl font-bold mb-4 text-gray-900">Show with Confidence</h3>
+                <p className="text-gray-600 mb-8 text-lg leading-relaxed">
                   You&apos;re protected! Show homes knowing you&apos;re covered if accidents happen.
                 </p>
-                <div className="bg-blue-50 rounded-lg p-4 text-left">
-                  <p className="text-sm font-semibold text-blue-900 mb-2">You&apos;re covered for:</p>
-                  <ul className="text-sm text-blue-800 space-y-1">
+                <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-5 text-left border-0">
+                  <p className="text-base font-bold text-gray-900 mb-3">You&apos;re covered for:</p>
+                  <ul className="text-base text-gray-700 space-y-2">
                     <li>• Accidental damage to property</li>
                     <li>• Broken items during showings</li>
                     <li>• Up to $30,000 per claim</li>
@@ -414,44 +429,44 @@ export default function HowItWorksPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-600 to-indigo-700 text-white">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-            Ready to Get Protected?
+      <section className="py-28 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, rgb(99 102 241) 1px, transparent 0)', backgroundSize: '40px 40px' }}></div>
+        </div>
+        <div className="absolute top-0 left-0 w-full h-full">
+          <div className="absolute top-20 left-20 w-72 h-72 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-float"></div>
+          <div className="absolute bottom-20 right-20 w-72 h-72 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-float" style={{ animationDelay: "1s" }}></div>
+        </div>
+        <div className="max-w-5xl mx-auto text-center relative z-10">
+          <Badge className="mb-8 bg-gradient-to-r from-blue-600 to-purple-600 text-white border-0 px-6 py-2.5 text-base font-semibold rounded-full shadow-lg">Ready to Get Started?</Badge>
+          <h2 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold mb-8 text-gray-900 tracking-tight leading-[1.1]">
+            Ready to Get{" "}
+            <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+              Protected
+            </span>
+            ?
           </h2>
-          <p className="text-xl text-blue-100 mb-8">
+          <p className="text-xl sm:text-2xl text-gray-600 mb-12 leading-relaxed max-w-3xl mx-auto">
             Sign up in minutes and show homes with complete peace of mind.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" variant="secondary" className="text-lg px-8 py-6" onClick={() => router.push("/auth/register")}>
+          <div className="flex flex-col sm:flex-row gap-5 justify-center mb-10">
+            <Button size="lg" className="text-xl px-14 py-8 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 shadow-2xl hover:shadow-premium-lg hover:scale-105 transition-all duration-300 rounded-2xl font-bold group border-0" onClick={() => router.push("/auth/register")}>
               Create Free Account
-              <ArrowRight className="ml-2 h-5 w-5" />
+              <ArrowRight className="ml-2 h-6 w-6 group-hover:translate-x-1 transition-transform" />
             </Button>
-            <Button size="lg" variant="outline" className="text-lg px-8 py-6 bg-transparent border-white text-white hover:bg-white/10" onClick={() => router.push("/pricing")}>
+            <Button size="lg" variant="outline" className="text-xl px-14 py-8 border-2 border-gray-300 hover:border-purple-600 hover:bg-purple-50 transition-all duration-300 rounded-2xl font-semibold" onClick={() => router.push("/pricing")}>
               View Pricing
             </Button>
           </div>
-          <p className="text-sm text-blue-100 mt-4">No credit card required to sign up</p>
+          <p className="text-base text-gray-500">No credit card required to sign up</p>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-gray-400 py-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto text-center">
-          <div className="flex items-center justify-center gap-2 mb-4">
-            <Shield className="w-6 h-6" />
-            <span className="text-xl font-bold text-white">ShowingSafe</span>
-          </div>
-          <p className="mb-4">Protection for real estate agents on every showing</p>
-          <div className="flex justify-center gap-6 mb-4">
-            <Link href="/" className="hover:text-white">Home</Link>
-            <Link href="/pricing" className="hover:text-white">Pricing</Link>
-            <Link href="/how-it-works" className="hover:text-white">How It Works</Link>
-            <Link href="/#faq" className="hover:text-white">FAQ</Link>
-          </div>
-          <p className="text-sm">&copy; 2025 ShowingSafe. All rights reserved.</p>
-        </div>
-      </footer>
+      <Footer />
+
+      {/* Floating CTA */}
+      <FloatingCTA />
     </main>
   );
 }
