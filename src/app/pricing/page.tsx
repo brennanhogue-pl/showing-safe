@@ -415,7 +415,7 @@ export default function PricingPage() {
             <Link href="/" className="hover:text-white">Home</Link>
             <Link href="/pricing" className="hover:text-white">Pricing</Link>
             <Link href="/how-it-works" className="hover:text-white">How It Works</Link>
-            <a href="/#faq" className="hover:text-white">FAQ</a>
+            <Link href="/#faq" className="hover:text-white">FAQ</Link>
           </div>
           <p className="text-sm">&copy; 2025 ShowingSafe. All rights reserved.</p>
         </div>
