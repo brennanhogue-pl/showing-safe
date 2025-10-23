@@ -67,6 +67,12 @@ export default function AcceptInvitePage() {
     e.preventDefault();
     setError(null);
 
+    // Check if invitation exists
+    if (!invitation) {
+      setError("Invalid invitation");
+      return;
+    }
+
     // Validate passwords match
     if (password !== confirmPassword) {
       setError("Passwords do not match");
