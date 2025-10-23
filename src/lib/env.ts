@@ -40,7 +40,7 @@ export const publicEnv = {
   },
   stripe: {
     publishableKey: getEnvVar('NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY'),
-    agentSubscriptionPriceId: getEnvVar('NEXT_PUBLIC_STRIPE_AGENT_SUBSCRIPTION_PRICE_ID'),
+    agentSubscriptionPriceId: getOptionalEnvVar('NEXT_PUBLIC_STRIPE_AGENT_SUBSCRIPTION_PRICE_ID'), // Optional - can be added after Stripe product creation
   },
   app: {
     url: getEnvVar('NEXT_PUBLIC_APP_URL'),
