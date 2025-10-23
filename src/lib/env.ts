@@ -18,8 +18,22 @@ function getOptionalEnvVar(key: string): string | undefined {
   return process.env[key];
 }
 
+// Define the type for server-side env
+type ServerEnv = {
+  stripe: {
+    secretKey: string;
+    webhookSecret: string;
+  };
+  supabase: {
+    serviceRoleKey: string;
+  };
+  resend: {
+    apiKey: string | undefined;
+  };
+};
+
 // Server-side only variables - only evaluate on server
-export const env = typeof window === 'undefined' ? {
+export const env: ServerEnv = typeof window === 'undefined' ? {
   stripe: {
     secretKey: getEnvVar('STRIPE_SECRET_KEY'),
     webhookSecret: getEnvVar('STRIPE_WEBHOOK_SECRET'),
@@ -30,7 +44,7 @@ export const env = typeof window === 'undefined' ? {
   resend: {
     apiKey: getOptionalEnvVar('RESEND_API_KEY'), // Optional for now
   },
-} : {} as any;
+} : {} as ServerEnv;
 
 // Public variables (available client-side)
 export const publicEnv = {
