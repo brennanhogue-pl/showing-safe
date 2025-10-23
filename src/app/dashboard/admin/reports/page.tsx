@@ -23,6 +23,10 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
+// Helper function for pie chart labels
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const renderPieLabel = (props: any) => `${props.name}: ${(props.percent * 100).toFixed(0)}%`;
+
 interface ReportsData {
   revenueByMonth: Array<{
     month: string;
@@ -341,13 +345,12 @@ export default function ReportsPage() {
           <CardContent>
             <ResponsiveContainer width="100%" height={300}>
               <PieChart>
-                {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
                 <Pie
                   data={claimsTypeData}
                   cx="50%"
                   cy="50%"
                   labelLine={false}
-                  label={(props: any) => `${props.name}: ${(props.percent * 100).toFixed(0)}%`}
+                  label={renderPieLabel}
                   outerRadius={80}
                   fill="#8884d8"
                   dataKey="value"
