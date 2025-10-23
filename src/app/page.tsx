@@ -243,26 +243,28 @@ export default function HomePage() {
       </section>
 
       {/* Solution Section */}
-      <section className="relative py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
-        {/* Gradient Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-700"></div>
+      <section className="relative py-24 px-4 sm:px-6 lg:px-8 overflow-hidden bg-gradient-to-br from-blue-50 via-white to-indigo-50">
+        {/* Subtle Background Pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, rgb(59 130 246) 1px, transparent 0)', backgroundSize: '40px 40px' }}></div>
+        </div>
 
         {/* Animated Blobs */}
-        <div className="absolute top-0 left-0 w-96 h-96 bg-white/10 rounded-full mix-blend-overlay filter blur-3xl animate-float"></div>
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-white/10 rounded-full mix-blend-overlay filter blur-3xl animate-float" style={{ animationDelay: "1.5s" }}></div>
+        <div className="absolute top-0 left-0 w-96 h-96 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-float"></div>
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-float" style={{ animationDelay: "1.5s" }}></div>
 
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center mb-16">
-            <Badge className="mb-4 bg-white/20 text-white border-0 backdrop-blur-sm">The Solution</Badge>
-            <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-white tracking-tight">
+            <Badge className="mb-4 bg-blue-600 text-white border-0">The Solution</Badge>
+            <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-gray-900 tracking-tight">
               Show Homes with{" "}
               <span className="relative inline-block">
-                <span className="relative z-10">Confidence</span>
-                <span className="absolute bottom-2 left-0 w-full h-3 bg-yellow-400/30 -rotate-1"></span>
+                <span className="relative z-10 text-blue-600">Confidence</span>
+                <span className="absolute bottom-2 left-0 w-full h-3 bg-blue-200 -rotate-1"></span>
               </span>
               , Not Fear
             </h2>
-            <p className="text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
               For less than a cup of coffee per month, protect yourself from the unexpected.
             </p>
           </div>
@@ -317,7 +319,7 @@ export default function HomePage() {
             </Card>
 
             {/* Listing Protection Card */}
-            <Card className="relative overflow-hidden border-2 border-white/20 shadow-premium-lg group hover-lift bg-white/95 backdrop-blur-sm">
+            <Card className="relative overflow-hidden border-2 border-gray-200 shadow-premium-lg group hover-lift bg-white">
               <div className="absolute top-0 right-0 w-32 h-32 bg-purple-100 rounded-full -mr-16 -mt-16"></div>
 
               <CardContent className="pt-8 pb-8 relative z-10">
@@ -561,36 +563,37 @@ export default function HomePage() {
       </section>
 
       {/* Final CTA */}
-      <section className="relative py-28 px-4 sm:px-6 lg:px-8 overflow-hidden">
-        {/* Premium Gradient Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-indigo-700 to-purple-800"></div>
+      <section className="relative py-28 px-4 sm:px-6 lg:px-8 overflow-hidden bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
+        {/* Subtle Background Pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, rgb(99 102 241) 1px, transparent 0)', backgroundSize: '40px 40px' }}></div>
+        </div>
 
         {/* Animated Elements */}
         <div className="absolute top-0 left-0 w-full h-full">
-          <div className="absolute top-20 left-20 w-72 h-72 bg-white/10 rounded-full mix-blend-overlay filter blur-3xl animate-float"></div>
-          <div className="absolute bottom-20 right-20 w-72 h-72 bg-white/10 rounded-full mix-blend-overlay filter blur-3xl animate-float" style={{ animationDelay: "1s" }}></div>
+          <div className="absolute top-20 left-20 w-72 h-72 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-float"></div>
+          <div className="absolute bottom-20 right-20 w-72 h-72 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-float" style={{ animationDelay: "1s" }}></div>
         </div>
 
         <div className="max-w-5xl mx-auto text-center relative z-10">
-          <Badge className="mb-6 bg-white/20 text-white border-0 backdrop-blur-sm px-4 py-2">Ready to Get Started?</Badge>
+          <Badge className="mb-6 bg-blue-600 text-white border-0 px-4 py-2">Ready to Get Started?</Badge>
 
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 text-white tracking-tight">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 text-gray-900 tracking-tight">
             Ready to Show Homes with{" "}
             <span className="relative inline-block">
-              <span className="relative z-10">Peace of Mind</span>
-              <span className="absolute bottom-2 left-0 w-full h-4 bg-yellow-400/30 -rotate-1"></span>
+              <span className="relative z-10 text-blue-600">Peace of Mind</span>
+              <span className="absolute bottom-2 left-0 w-full h-4 bg-blue-200 -rotate-1"></span>
             </span>
             ?
           </h2>
 
-          <p className="text-xl sm:text-2xl text-blue-100 mb-10 leading-relaxed max-w-3xl mx-auto">
+          <p className="text-xl sm:text-2xl text-gray-600 mb-10 leading-relaxed max-w-3xl mx-auto">
             Join hundreds of agents who protect themselves and their clients on every showing. Get started in under 2 minutes.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
             <Button
               size="lg"
-              variant="secondary"
               className="text-lg px-12 py-7 shadow-premium-lg hover:scale-105 transition-transform btn-premium group"
               onClick={() => router.push("/auth/register")}
             >
@@ -600,7 +603,7 @@ export default function HomePage() {
             <Button
               size="lg"
               variant="outline"
-              className="text-lg px-12 py-7 border-2 border-white text-white hover:bg-white/10 backdrop-blur-sm"
+              className="text-lg px-12 py-7 border-2 border-gray-300 hover:bg-white/50"
               onClick={() => router.push("/pricing")}
             >
               View Pricing
@@ -608,17 +611,17 @@ export default function HomePage() {
           </div>
 
           {/* Trust Badges */}
-          <div className="flex flex-wrap items-center justify-center gap-8 text-blue-100 text-sm">
+          <div className="flex flex-wrap items-center justify-center gap-8 text-gray-600 text-sm">
             <div className="flex items-center gap-2">
-              <Check className="w-5 h-5 text-green-400" />
+              <Check className="w-5 h-5 text-green-600" />
               <span>No credit card required</span>
             </div>
             <div className="flex items-center gap-2">
-              <Check className="w-5 h-5 text-green-400" />
+              <Check className="w-5 h-5 text-green-600" />
               <span>Free account setup</span>
             </div>
             <div className="flex items-center gap-2">
-              <Check className="w-5 h-5 text-green-400" />
+              <Check className="w-5 h-5 text-green-600" />
               <span>Cancel anytime</span>
             </div>
           </div>
