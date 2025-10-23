@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -60,7 +61,7 @@ export default function ForAgentsPage() {
                 </div>
                 <h3 className="text-xl font-bold mb-3">Protect Your Income</h3>
                 <p className="text-gray-600">
-                  One accident shouldn't cost you thousands. Keep your hard-earned commissions where they belong—in your pocket.
+                  One accident shouldn&apos;t cost you thousands. Keep your hard-earned commissions where they belong—in your pocket.
                 </p>
               </CardContent>
             </Card>
@@ -72,7 +73,7 @@ export default function ForAgentsPage() {
                 </div>
                 <h3 className="text-xl font-bold mb-3">Build Client Trust</h3>
                 <p className="text-gray-600">
-                  Show sellers you take their property seriously with listing protection. It's a powerful differentiator.
+                  Show sellers you take their property seriously with listing protection. It&apos;s a powerful differentiator.
                 </p>
               </CardContent>
             </Card>
@@ -115,7 +116,7 @@ export default function ForAgentsPage() {
                   <div>
                     <h3 className="text-lg font-bold mb-2">The Knocked Over Vase</h3>
                     <p className="text-gray-600 text-sm mb-3">
-                      You're showing a luxury home. While gesturing to the amazing view, you accidentally knock over a $3,500 ceramic vase.
+                      You&apos;re showing a luxury home. While gesturing to the amazing view, you accidentally knock over a $3,500 ceramic vase.
                     </p>
                     <div className="bg-green-50 border border-green-200 rounded-lg p-3">
                       <p className="text-sm font-semibold text-green-900">✓ With ShowingSafe:</p>
@@ -211,7 +212,7 @@ export default function ForAgentsPage() {
                 <div className="text-4xl font-bold mb-2">$9.99</div>
                 <p className="text-blue-100 mb-4">per month</p>
                 <p className="text-sm text-blue-100">
-                  That's $120/year for complete peace of mind on every showing
+                  That&apos;s $120/year for complete peace of mind on every showing
                 </p>
               </CardContent>
             </Card>
@@ -244,7 +245,7 @@ export default function ForAgentsPage() {
               <strong>Reality Check:</strong> The average accidental damage during a showing costs $1,500-$4,000.
             </p>
             <p className="text-blue-100">
-              That's 12-33 years of ShowingSafe coverage. Can you really afford NOT to be protected?
+              That&apos;s 12-33 years of ShowingSafe coverage. Can you really afford NOT to be protected?
             </p>
           </div>
         </div>
@@ -267,7 +268,7 @@ export default function ForAgentsPage() {
                   <div>
                     <h3 className="font-bold text-lg mb-2">No Deductibles</h3>
                     <p className="text-gray-600">
-                      Unlike traditional insurance, there's no deductible. If your claim is approved, you get reimbursed for the full amount up to coverage limits.
+                      Unlike traditional insurance, there&apos;s no deductible. If your claim is approved, you get reimbursed for the full amount up to coverage limits.
                     </p>
                   </div>
                 </div>
@@ -281,7 +282,7 @@ export default function ForAgentsPage() {
                   <div>
                     <h3 className="font-bold text-lg mb-2">Unlimited Claims</h3>
                     <p className="text-gray-600">
-                      File as many claims as you need. No "3 claims per year" limits. We're here to protect you on every single showing.
+                      File as many claims as you need. No &quot;3 claims per year&quot; limits. We&apos;re here to protect you on every single showing.
                     </p>
                   </div>
                 </div>
@@ -368,7 +369,7 @@ export default function ForAgentsPage() {
                   ))}
                 </div>
                 <p className="text-gray-700 mb-4 italic">
-                  "ShowingSafe gave me peace of mind I didn't know I needed. Worth every penny after my first claim."
+                  &quot;ShowingSafe gave me peace of mind I didn&apos;t know I needed. Worth every penny after my first claim.&quot;
                 </p>
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
@@ -390,7 +391,7 @@ export default function ForAgentsPage() {
                   ))}
                 </div>
                 <p className="text-gray-700 mb-4 italic">
-                  "The claims process was so easy. Filed on my phone, approved in 3 days. Game changer for busy agents."
+                  &quot;The claims process was so easy. Filed on my phone, approved in 3 days. Game changer for busy agents.&quot;
                 </p>
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
@@ -412,7 +413,7 @@ export default function ForAgentsPage() {
                   ))}
                 </div>
                 <p className="text-gray-700 mb-4 italic">
-                  "My sellers love that I protect their home with listing insurance. It's become part of my listing presentation."
+                  &quot;My sellers love that I protect their home with listing insurance. It&apos;s become part of my listing presentation.&quot;
                 </p>
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
@@ -460,10 +461,10 @@ export default function ForAgentsPage() {
           </div>
           <p className="mb-4">Protection for real estate agents on every showing</p>
           <div className="flex justify-center gap-6 mb-4">
-            <a href="/" className="hover:text-white">Home</a>
-            <a href="/pricing" className="hover:text-white">Pricing</a>
-            <a href="/how-it-works" className="hover:text-white">How It Works</a>
-            <a href="/for-agents" className="hover:text-white">For Agents</a>
+            <Link href="/" className="hover:text-white">Home</Link>
+            <Link href="/pricing" className="hover:text-white">Pricing</Link>
+            <Link href="/how-it-works" className="hover:text-white">How It Works</Link>
+            <Link href="/for-agents" className="hover:text-white">For Agents</Link>
           </div>
           <p className="text-sm">&copy; 2025 ShowingSafe. All rights reserved.</p>
         </div>

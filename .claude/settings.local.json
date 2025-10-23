@@ -15,7 +15,10 @@
       "Bash(npm install:*)",
       "Bash(curl:*)",
       "Bash(cat:*)",
-      "Read(//var/folders/bv/0prcgsn15h75zq8vxlnjtg1h0000gn/T/TemporaryItems/NSIRD_screencaptureui_QWpz2b/**)"
+      "Read(//var/folders/bv/0prcgsn15h75zq8vxlnjtg1h0000gn/T/TemporaryItems/NSIRD_screencaptureui_QWpz2b/**)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push)"
     ],
     "deny": [],
     "ask": []

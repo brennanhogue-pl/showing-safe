@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardDescription } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -78,7 +79,7 @@ export default function PricingPage() {
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="space-y-4">
-                  <h3 className="font-semibold text-lg">What's Included:</h3>
+                  <h3 className="font-semibold text-lg">What&apos;s Included:</h3>
                   <ul className="space-y-3">
                     <li className="flex items-start gap-3">
                       <Check className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
@@ -152,7 +153,7 @@ export default function PricingPage() {
                 </div>
                 <h2 className="text-2xl font-bold mb-2">Listing Protection</h2>
                 <CardDescription className="text-base">
-                  Protect your seller's home during the listing period
+                  Protect your seller&apos;s home during the listing period
                 </CardDescription>
                 <div className="mt-6">
                   <div className="flex items-baseline justify-center gap-2">
@@ -164,7 +165,7 @@ export default function PricingPage() {
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="space-y-4">
-                  <h3 className="font-semibold text-lg">What's Included:</h3>
+                  <h3 className="font-semibold text-lg">What&apos;s Included:</h3>
                   <ul className="space-y-3">
                     <li className="flex items-start gap-3">
                       <Check className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
@@ -235,7 +236,7 @@ export default function PricingPage() {
               <CardContent className="pt-6 text-center">
                 <h3 className="text-2xl font-bold mb-2">Can I have both?</h3>
                 <p className="text-blue-100 mb-4">
-                  Absolutely! Many agents subscribe to Agent Protection for personal coverage, and add Listing Protection for their high-value properties. It's the ultimate peace of mind package.
+                  Absolutely! Many agents subscribe to Agent Protection for personal coverage, and add Listing Protection for their high-value properties. It&apos;s the ultimate peace of mind package.
                 </p>
                 <Button size="lg" variant="secondary" onClick={() => router.push("/auth/register")}>
                   Get Started with Both
@@ -254,7 +255,7 @@ export default function PricingPage() {
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
               Compare Plans
             </h2>
-            <p className="text-gray-600">See what's included in each protection plan</p>
+            <p className="text-gray-600">See what&apos;s included in each protection plan</p>
           </div>
 
           <div className="overflow-x-auto">
@@ -341,7 +342,7 @@ export default function PricingPage() {
               <CardContent className="pt-6">
                 <h3 className="text-lg font-semibold mb-2">Can I cancel the Agent Protection subscription?</h3>
                 <p className="text-gray-600">
-                  Yes, you can cancel your Agent Protection subscription anytime. You'll remain covered through the end of your current billing period.
+                  Yes, you can cancel your Agent Protection subscription anytime. You&apos;ll remain covered through the end of your current billing period.
                 </p>
               </CardContent>
             </Card>
@@ -359,7 +360,7 @@ export default function PricingPage() {
               <CardContent className="pt-6">
                 <h3 className="text-lg font-semibold mb-2">Do both plans really have unlimited claims?</h3>
                 <p className="text-gray-600">
-                  Yes! Agent Protection has unlimited claims while you're subscribed. Listing Protection has unlimited claims during the 90-day coverage period for that specific listing.
+                  Yes! Agent Protection has unlimited claims while you&apos;re subscribed. Listing Protection has unlimited claims during the 90-day coverage period for that specific listing.
                 </p>
               </CardContent>
             </Card>
@@ -368,7 +369,7 @@ export default function PricingPage() {
               <CardContent className="pt-6">
                 <h3 className="text-lg font-semibold mb-2">Is there a free trial?</h3>
                 <p className="text-gray-600">
-                  We don't offer a free trial, but you can create a free account to explore the platform. You'll need an active subscription to file claims.
+                  We don&apos;t offer a free trial, but you can create a free account to explore the platform. You&apos;ll need an active subscription to file claims.
                 </p>
               </CardContent>
             </Card>
@@ -411,9 +412,9 @@ export default function PricingPage() {
           </div>
           <p className="mb-4">Protection for real estate agents on every showing</p>
           <div className="flex justify-center gap-6 mb-4">
-            <a href="/" className="hover:text-white">Home</a>
-            <a href="/pricing" className="hover:text-white">Pricing</a>
-            <a href="/#how-it-works" className="hover:text-white">How It Works</a>
+            <Link href="/" className="hover:text-white">Home</Link>
+            <Link href="/pricing" className="hover:text-white">Pricing</Link>
+            <Link href="/how-it-works" className="hover:text-white">How It Works</Link>
             <a href="/#faq" className="hover:text-white">FAQ</a>
           </div>
           <p className="text-sm">&copy; 2025 ShowingSafe. All rights reserved.</p>

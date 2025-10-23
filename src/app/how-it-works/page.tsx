@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -44,7 +45,7 @@ export default function HowItWorksPage() {
             Protection in Minutes, Peace of Mind Forever
           </h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Getting protected is fast and easy. Here's exactly how ShowingSafe works from sign-up to claim payout.
+            Getting protected is fast and easy. Here&apos;s exactly how ShowingSafe works from sign-up to claim payout.
           </p>
         </div>
       </section>
@@ -65,11 +66,11 @@ export default function HowItWorksPage() {
                   Create your free account in under 2 minutes. No credit card required to get started.
                 </p>
                 <div className="bg-blue-50 rounded-lg p-4 text-left">
-                  <p className="text-sm font-semibold text-blue-900 mb-2">What you'll need:</p>
+                  <p className="text-sm font-semibold text-blue-900 mb-2">What you&apos;ll need:</p>
                   <ul className="text-sm text-blue-800 space-y-1">
                     <li>• Your name and email</li>
                     <li>• A secure password</li>
-                    <li>• That's it!</li>
+                    <li>• That&apos;s it!</li>
                   </ul>
                 </div>
               </CardContent>
@@ -109,10 +110,10 @@ export default function HowItWorksPage() {
                 <Home className="w-12 h-12 text-blue-600 mx-auto mb-4" />
                 <h3 className="text-2xl font-bold mb-3">Show with Confidence</h3>
                 <p className="text-gray-600 mb-6">
-                  You're protected! Show homes knowing you're covered if accidents happen.
+                  You&apos;re protected! Show homes knowing you&apos;re covered if accidents happen.
                 </p>
                 <div className="bg-blue-50 rounded-lg p-4 text-left">
-                  <p className="text-sm font-semibold text-blue-900 mb-2">You're covered for:</p>
+                  <p className="text-sm font-semibold text-blue-900 mb-2">You&apos;re covered for:</p>
                   <ul className="text-sm text-blue-800 space-y-1">
                     <li>• Accidental damage to property</li>
                     <li>• Broken items during showings</li>
@@ -133,7 +134,7 @@ export default function HowItWorksPage() {
               If Damage Occurs: Filing a Claim
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              We've made the claims process as simple as possible. Here's what happens step-by-step.
+              We&apos;ve made the claims process as simple as possible. Here&apos;s what happens step-by-step.
             </p>
           </div>
 
@@ -151,7 +152,7 @@ export default function HowItWorksPage() {
                       <h3 className="text-xl font-bold">Report the Incident</h3>
                     </div>
                     <p className="text-gray-600 mb-4">
-                      As soon as damage occurs, log into your ShowingSafe dashboard and click "File a Claim". You'll fill out a simple form with details about what happened.
+                      As soon as damage occurs, log into your ShowingSafe dashboard and click &quot;File a Claim&quot;. You&apos;ll fill out a simple form with details about what happened.
                     </p>
                     <div className="bg-gray-50 rounded-lg p-4">
                       <p className="text-sm font-semibold mb-2">Information needed:</p>
@@ -209,7 +210,7 @@ export default function HowItWorksPage() {
                       <h3 className="text-xl font-bold">We Review Your Claim</h3>
                     </div>
                     <p className="text-gray-600 mb-4">
-                      Our team reviews your claim and documentation. We'll reach out if we need any additional information.
+                      Our team reviews your claim and documentation. We&apos;ll reach out if we need any additional information.
                     </p>
                     <div className="bg-gray-50 rounded-lg p-4">
                       <p className="text-sm font-semibold mb-2">What we look at:</p>
@@ -238,7 +239,7 @@ export default function HowItWorksPage() {
                       <h3 className="text-xl font-bold">Get Reimbursed</h3>
                     </div>
                     <p className="text-gray-600 mb-4">
-                      Once your claim is approved, you'll receive reimbursement quickly so you can cover the repair costs without stress.
+                      Once your claim is approved, you&apos;ll receive reimbursement quickly so you can cover the repair costs without stress.
                     </p>
                     <div className="bg-white rounded-lg p-4 border border-green-200">
                       <p className="text-sm font-semibold mb-2">Payout details:</p>
@@ -257,12 +258,12 @@ export default function HowItWorksPage() {
         </div>
       </section>
 
-      {/* What's Covered */}
+      {/* What&apos;s Covered */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-50 to-indigo-100">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-              What's Covered?
+              What&apos;s Covered?
             </h2>
             <p className="text-xl text-gray-600">
               Examples of damages we cover during showings
@@ -332,9 +333,9 @@ export default function HowItWorksPage() {
               <div className="flex items-start gap-3">
                 <AlertCircle className="w-6 h-6 text-orange-600 flex-shrink-0 mt-1" />
                 <div>
-                  <h3 className="font-semibold text-lg mb-2">What's NOT Covered</h3>
+                  <h3 className="font-semibold text-lg mb-2">What&apos;s NOT Covered</h3>
                   <p className="text-gray-700 text-sm mb-3">
-                    To keep premiums low and protect all our members, we don't cover:
+                    To keep premiums low and protect all our members, we don&apos;t cover:
                   </p>
                   <ul className="text-sm text-gray-700 space-y-1">
                     <li>• Intentional damage or vandalism</li>
@@ -443,9 +444,9 @@ export default function HowItWorksPage() {
           </div>
           <p className="mb-4">Protection for real estate agents on every showing</p>
           <div className="flex justify-center gap-6 mb-4">
-            <a href="/" className="hover:text-white">Home</a>
-            <a href="/pricing" className="hover:text-white">Pricing</a>
-            <a href="/how-it-works" className="hover:text-white">How It Works</a>
+            <Link href="/" className="hover:text-white">Home</Link>
+            <Link href="/pricing" className="hover:text-white">Pricing</Link>
+            <Link href="/how-it-works" className="hover:text-white">How It Works</Link>
             <a href="/#faq" className="hover:text-white">FAQ</a>
           </div>
           <p className="text-sm">&copy; 2025 ShowingSafe. All rights reserved.</p>

@@ -86,7 +86,7 @@ export default function HomePage() {
               Protect Yourself on Every Showing
             </h1>
             <p className="text-xl text-gray-600 mb-8">
-              Showing a home can be unpredictable. Eliminate the stress with coverage that protects you from accidental damage during showings — so you're never stuck with an unexpected bill.
+              Showing a home can be unpredictable. Eliminate the stress with coverage that protects you from accidental damage during showings — so you&apos;re never stuck with an unexpected bill.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
               <Button size="lg" className="text-lg px-8 py-6" onClick={() => router.push("/auth/register")}>
@@ -110,7 +110,7 @@ export default function HomePage() {
               One Accident Can Cost You Hundreds
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Knocked over a vase? Scratched hardwood floors? Damaged a fixture? These things happen, and they're expensive.
+              Knocked over a vase? Scratched hardwood floors? Damaged a fixture? These things happen, and they&apos;re expensive.
             </p>
           </div>
 
@@ -130,7 +130,7 @@ export default function HomePage() {
                 <DollarSign className="w-12 h-12 text-orange-500 mb-4" />
                 <h3 className="text-xl font-semibold mb-2">Out of Pocket</h3>
                 <p className="text-gray-600">
-                  Without protection, you're personally liable for damages that occur during showings you conduct.
+                  Without protection, you&apos;re personally liable for damages that occur during showings you conduct.
                 </p>
               </CardContent>
             </Card>
@@ -241,7 +241,7 @@ export default function HomePage() {
               </div>
               <h3 className="text-xl font-semibold mb-2">Show with Confidence</h3>
               <p className="text-gray-600">
-                Walk through homes knowing you're protected from accidental damage.
+                Walk through homes knowing you&apos;re protected from accidental damage.
               </p>
             </div>
 
@@ -288,7 +288,7 @@ export default function HomePage() {
               <CardContent className="pt-6">
                 <h3 className="text-lg font-semibold mb-2">What is Listing Protection?</h3>
                 <p className="text-gray-600">
-                  For $99 one-time, you can protect a specific listing from damages that occur during showings for 90 days. Perfect for protecting your sellers' homes during the listing period.
+                  For $99 one-time, you can protect a specific listing from damages that occur during showings for 90 days. Perfect for protecting your sellers&apos; homes during the listing period.
                 </p>
               </CardContent>
             </Card>
@@ -297,7 +297,7 @@ export default function HomePage() {
               <CardContent className="pt-6">
                 <h3 className="text-lg font-semibold mb-2">How fast is reimbursement?</h3>
                 <p className="text-gray-600">
-                  We process claims quickly. Once approved, you'll receive reimbursement promptly so you can move forward without financial stress.
+                  We process claims quickly. Once approved, you&apos;ll receive reimbursement promptly so you can move forward without financial stress.
                 </p>
               </CardContent>
             </Card>
