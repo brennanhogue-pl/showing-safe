@@ -200,7 +200,9 @@ export default function AcceptInvitePage() {
     );
   }
 
-  const roleDisplayName = invitation?.role.charAt(0).toUpperCase() + invitation?.role.slice(1);
+  const roleDisplayName = invitation?.role
+    ? invitation.role.charAt(0).toUpperCase() + invitation.role.slice(1)
+    : "User";
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
