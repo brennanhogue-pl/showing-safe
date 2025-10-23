@@ -346,6 +346,7 @@ export default function ReportsPage() {
                   cx="50%"
                   cy="50%"
                   labelLine={false}
+                  {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
                   label={(props: any) => `${props.name}: ${(props.percent * 100).toFixed(0)}%`}
                   outerRadius={80}
                   fill="#8884d8"
