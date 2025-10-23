@@ -167,7 +167,7 @@ export async function PATCH(
         const roleDisplayName = invitation.role.charAt(0).toUpperCase() + invitation.role.slice(1);
 
         const { data, error: emailError } = await resend.emails.send({
-          from: 'ShowingSafe <onboarding@resend.dev>',
+          from: 'ShowingSafe <hello@notifications.showingsafe.co>',
           to: invitation.email,
           subject: `Reminder: You've been invited to join ShowingSafe`,
           html: `

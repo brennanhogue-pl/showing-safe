@@ -186,7 +186,7 @@ export async function POST(req: Request) {
         const roleDisplayName = role.charAt(0).toUpperCase() + role.slice(1);
 
         const { data, error: emailError } = await resend.emails.send({
-          from: 'ShowingSafe <onboarding@resend.dev>',
+          from: 'ShowingSafe <hello@notifications.showingsafe.co>',
           to: email,
           subject: `You've been invited to join ShowingSafe`,
           html: `
