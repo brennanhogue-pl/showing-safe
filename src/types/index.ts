@@ -278,6 +278,7 @@ export interface AdminClaimWithDetails extends Claim {
   user?: {
     full_name: string;
     email: string;
+    role: UserRole;
   };
   policy?: {
     property_address: string;
