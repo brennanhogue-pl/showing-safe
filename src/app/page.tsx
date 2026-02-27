@@ -207,7 +207,7 @@ export default function HomePage() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-sm text-gray-600 animate-fade-in-up animate-delay-300">
               <div className="flex items-center gap-2">
                 <Check className="w-5 h-5 text-green-600" />
-                <span>Starting at $9.99/month</span>
+                <span>Starting at $19.99/month</span>
               </div>
               <div className="hidden sm:block w-1 h-1 bg-gray-400 rounded-full"></div>
               <div className="flex items-center gap-2">
@@ -334,7 +334,7 @@ export default function HomePage() {
 
                 <h3 className="text-3xl font-bold mb-3 text-gray-900">Agent Protection</h3>
                 <div className="mb-6">
-                  <span className="text-6xl font-extrabold text-gray-900">$9.99</span>
+                  <span className="text-6xl font-extrabold text-gray-900">$19.99</span>
                   <span className="text-2xl text-gray-600">/month</span>
                 </div>
 
@@ -347,7 +347,7 @@ export default function HomePage() {
                     <div className="w-6 h-6 bg-gradient-to-br from-green-500 to-emerald-500 rounded-full flex items-center justify-center flex-shrink-0">
                       <Check className="w-4 h-4 text-white" />
                     </div>
-                    <span className="text-gray-700 text-lg">Up to $30,000 per claim</span>
+                    <span className="text-gray-700 text-lg">Up to $100,000 per claim</span>
                   </li>
                   <li className="flex items-center gap-3">
                     <div className="w-6 h-6 bg-gradient-to-br from-green-500 to-emerald-500 rounded-full flex items-center justify-center flex-shrink-0">
@@ -394,7 +394,7 @@ export default function HomePage() {
                     <div className="w-6 h-6 bg-gradient-to-br from-green-500 to-emerald-500 rounded-full flex items-center justify-center flex-shrink-0">
                       <Check className="w-4 h-4 text-white" />
                     </div>
-                    <span className="text-gray-700 text-lg">Up to $30,000 per claim</span>
+                    <span className="text-gray-700 text-lg">Up to $100,000 per claim</span>
                   </li>
                   <li className="flex items-center gap-3">
                     <div className="w-6 h-6 bg-gradient-to-br from-green-500 to-emerald-500 rounded-full flex items-center justify-center flex-shrink-0">
@@ -540,7 +540,7 @@ export default function HomePage() {
                   <div>
                     <h3 className="text-2xl font-bold mb-3 text-gray-900">What does the Agent Protection cover?</h3>
                     <p className="text-gray-600 leading-relaxed text-lg">
-                      The $9.99/month plan covers you when you accidentally damage something while showing any home. This includes knocked over items, scratched floors, broken fixtures, and more — up to $30,000 per claim with unlimited claims.
+                      The $19.99/month plan covers you when you accidentally damage something while showing any home. This includes knocked over items, scratched floors, broken fixtures, and more — up to $100,000 per claim with unlimited claims.
                     </p>
                   </div>
                 </div>

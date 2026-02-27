@@ -106,7 +106,7 @@ export default function HowItWorksPage() {
                 <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-5 text-left border-0">
                   <p className="text-base font-bold text-gray-900 mb-3">Your options:</p>
                   <ul className="text-base text-gray-700 space-y-2">
-                    <li>• Agent Protection: $9.99/month</li>
+                    <li>• Agent Protection: $19.99/month</li>
                     <li>• Listing Protection: $99/listing</li>
                     <li>• Or get both for full coverage</li>
                   </ul>
@@ -132,7 +132,7 @@ export default function HowItWorksPage() {
                   <ul className="text-base text-gray-700 space-y-2">
                     <li>• Accidental damage to property</li>
                     <li>• Broken items during showings</li>
-                    <li>• Up to $30,000 per claim</li>
+                    <li>• Up to $100,000 per claim</li>
                   </ul>
                 </div>
               </CardContent>
@@ -261,7 +261,7 @@ export default function HowItWorksPage() {
                       <ul className="text-sm text-gray-700 space-y-1">
                         <li>• Direct deposit to your account</li>
                         <li>• Fast processing after approval</li>
-                        <li>• Up to $30,000 per claim</li>
+                        <li>• Up to $100,000 per claim</li>
                         <li>• Track status in your dashboard</li>
                       </ul>
                     </div>

@@ -86,12 +86,12 @@ export async function GET(req: Request) {
     // Revenue calculations
     // For simplicity, assuming:
     // - Single-use policy = $99
-    // - Agent subscription = $9.99/month
+    // - Agent subscription = $19.99/month
     // - Total revenue = (total policies * 99) + we'll skip subscription revenue for now since it's recurring
     const singleUsePolicyPrice = 99;
     const totalRevenue = totalPolicies * singleUsePolicyPrice; // Simplified
 
-    const agentSubscriptionPrice = 9.99;
+    const agentSubscriptionPrice = 19.99;
     const monthlyRecurringRevenue = activeAgentSubscriptions * agentSubscriptionPrice;
 
     const stats: AdminDashboardStats = {

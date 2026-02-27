@@ -79,7 +79,7 @@ export default function SettingsPage() {
               </div>
               <div className="flex justify-between items-center p-2 bg-gray-50 rounded">
                 <span className="text-sm font-medium">Agent Subscription</span>
-                <Badge>$9.99/month</Badge>
+                <Badge>$19.99/month</Badge>
               </div>
               <div className="flex justify-between items-center p-2 bg-gray-50 rounded">
                 <span className="text-sm font-medium">Add-On Listing</span>

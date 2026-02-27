@@ -87,7 +87,7 @@ export default function PricingPage() {
                 </CardDescription>
                 <div className="mt-8">
                   <div className="flex items-baseline justify-center gap-2">
-                    <span className="text-6xl font-extrabold text-gray-900">$9.99</span>
+                    <span className="text-6xl font-extrabold text-gray-900">$19.99</span>
                     <span className="text-2xl text-gray-600">/month</span>
                   </div>
                   <p className="text-base text-gray-500 mt-3">Billed monthly • Cancel anytime</p>
@@ -102,7 +102,7 @@ export default function PricingPage() {
                         <Check className="w-4 h-4 text-white" />
                       </div>
                       <div>
-                        <p className="font-semibold text-lg text-gray-900">Up to $30,000 per claim</p>
+                        <p className="font-semibold text-lg text-gray-900">Up to $100,000 per claim</p>
                         <p className="text-base text-gray-600">Maximum coverage for each incident</p>
                       </div>
                     </li>
@@ -201,7 +201,7 @@ export default function PricingPage() {
                         <Check className="w-4 h-4 text-white" />
                       </div>
                       <div>
-                        <p className="font-semibold text-lg text-gray-900">Up to $30,000 per claim</p>
+                        <p className="font-semibold text-lg text-gray-900">Up to $100,000 per claim</p>
                         <p className="text-base text-gray-600">Maximum coverage for each incident</p>
                       </div>
                     </li>
@@ -312,7 +312,7 @@ export default function PricingPage() {
               <tbody className="divide-y divide-gray-200">
                 <tr>
                   <td className="py-4 px-4 text-gray-700">Monthly Cost</td>
-                  <td className="py-4 px-4 text-center font-semibold">$9.99/month</td>
+                  <td className="py-4 px-4 text-center font-semibold">$19.99/month</td>
                   <td className="py-4 px-4 text-center text-gray-500">—</td>
                 </tr>
                 <tr className="bg-gray-50">
@@ -327,8 +327,8 @@ export default function PricingPage() {
                 </tr>
                 <tr className="bg-gray-50">
                   <td className="py-4 px-4 text-gray-700">Max Per Claim</td>
-                  <td className="py-4 px-4 text-center font-semibold">$30,000</td>
-                  <td className="py-4 px-4 text-center font-semibold">$30,000</td>
+                  <td className="py-4 px-4 text-center font-semibold">$100,000</td>
+                  <td className="py-4 px-4 text-center font-semibold">$100,000</td>
                 </tr>
                 <tr>
                   <td className="py-4 px-4 text-gray-700">Number of Claims</td>

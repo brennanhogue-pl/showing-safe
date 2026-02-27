@@ -135,7 +135,7 @@ export default function ForAgentsPage() {
                     </p>
                     <div className="bg-gradient-to-br from-green-50 to-emerald-50 border-0 rounded-2xl p-4">
                       <p className="text-base font-bold text-gray-900 mb-1">✓ With ShowingSafe:</p>
-                      <p className="text-base text-gray-700">File claim, get reimbursed up to $30,000. Your $9.99/month subscription just saved you 350x its cost.</p>
+                      <p className="text-base text-gray-700">File claim, get reimbursed up to $100,000. Your $19.99/month subscription just saved you 350x its cost.</p>
                     </div>
                   </div>
                 </div>
@@ -230,7 +230,7 @@ export default function ForAgentsPage() {
                 <div className="w-20 h-20 bg-gradient-to-br from-green-500 to-emerald-500 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-lg">
                   <TrendingDown className="w-10 h-10 text-white" />
                 </div>
-                <div className="text-5xl font-extrabold mb-3 text-gray-900">$9.99</div>
+                <div className="text-5xl font-extrabold mb-3 text-gray-900">$19.99</div>
                 <p className="text-gray-600 mb-4 text-lg font-semibold">per month</p>
                 <p className="text-base text-gray-600 leading-relaxed">
                   That&apos;s $120/year for complete peace of mind on every showing
@@ -243,7 +243,7 @@ export default function ForAgentsPage() {
                 <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-lg">
                   <DollarSign className="w-10 h-10 text-white" />
                 </div>
-                <div className="text-5xl font-extrabold mb-3 text-gray-900">$30,000</div>
+                <div className="text-5xl font-extrabold mb-3 text-gray-900">$100,000</div>
                 <p className="text-gray-600 mb-4 text-lg font-semibold">max per claim</p>
                 <p className="text-base text-gray-600 leading-relaxed">
                   Up to 250x your annual cost in coverage for a single claim

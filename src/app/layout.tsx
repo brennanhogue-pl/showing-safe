@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "ShowingSafe - Protection for Real Estate Agents",
-  description: "Protect yourself from accidental damage during showings. Starting at just $9.99/month.",
+  description: "Protect yourself from accidental damage during showings. Starting at just $19.99/month.",
 };
 
 export default function RootLayout({

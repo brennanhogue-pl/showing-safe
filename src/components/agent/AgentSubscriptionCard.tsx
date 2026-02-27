@@ -91,7 +91,7 @@ export default function AgentSubscriptionCard() {
             <div>
               <h3 className="font-semibold text-lg">Active Subscription</h3>
               <p className="text-sm text-muted-foreground">
-                $9.99/month • Unlimited claims up to $1,000 per incident
+                $19.99/month • Unlimited claims up to $1,000 per incident
               </p>
             </div>
             {getStatusBadge()}
@@ -145,7 +145,7 @@ export default function AgentSubscriptionCard() {
         <div className="space-y-4">
           <div className="flex items-center justify-between">
             <div>
-              <h3 className="font-semibold text-lg">Subscribe for $9.99/month</h3>
+              <h3 className="font-semibold text-lg">Subscribe for $19.99/month</h3>
               <p className="text-sm text-muted-foreground">
                 Protection for incidents during showings
               </p>
@@ -187,7 +187,7 @@ export default function AgentSubscriptionCard() {
                 Processing...
               </>
             ) : (
-              "Subscribe Now - $9.99/month"
+              "Subscribe Now - $19.99/month"
             )}
           </Button>
 

@@ -3,7 +3,7 @@
  *
  * This creates:
  * - Product: "ShowingSafe Agent Subscription"
- * - Price: $9.99/month recurring
+ * - Price: $19.99/month recurring
  *
  * Usage:
  * 1. Make sure your STRIPE_SECRET_KEY is set in .env.local
@@ -53,7 +53,7 @@ async function createAgentSubscription() {
     console.log("💰 Creating price...");
     const price = await stripe.prices.create({
       product: product.id,
-      unit_amount: 999, // $9.99 in cents
+      unit_amount: 1999, // $19.99 in cents
       currency: "usd",
       recurring: {
         interval: "month",

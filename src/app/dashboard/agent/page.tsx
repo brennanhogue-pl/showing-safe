@@ -200,7 +200,7 @@ export default function AgentDashboard() {
         <CardHeader>
           <CardTitle>Agent Subscription</CardTitle>
           <p className="text-sm text-muted-foreground">
-            $9.99/month for unlimited claims up to $1,000 per incident during showings
+            $19.99/month for unlimited claims up to $1,000 per incident during showings
           </p>
         </CardHeader>
         <CardContent>
